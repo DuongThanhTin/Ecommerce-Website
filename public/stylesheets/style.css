@@ -1,0 +1,42 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+img{
+  max-width: 100%;
+}
+
+ul,li{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.container-menu-desktop {
+  background: black;
+}
+body{
+  font-size: 16px;
+}
+header{
+  width:100%;
+  background: #333;
+  height: 20px;
+
+}
+
+section{
+  width:100%;
+  
+}

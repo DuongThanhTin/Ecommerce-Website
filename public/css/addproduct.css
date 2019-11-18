@@ -1,0 +1,10 @@
+.addproduct-category{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.option-category{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

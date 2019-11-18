@@ -1,0 +1,114 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../admin/header-admin.ejs') %>
+
+<body class="animsition">
+    <% if (errorMessageProduct) { %>
+    <div class="user-message user-message--error m-b-20"><%= errorMessageProduct %></div>
+    <% } %>
+
+    <!-- Title page -->
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(../images/iphone-xr1.jpg);">
+        <h2 class="ltext-105 cl0 txt-center" style='color: aquamarine'>
+            Add Product
+            </h1>
+    </section>
+
+
+    <!-- Content page -->
+    <section class="bg0 p-t-104 p-b-116">
+        <div class="container">
+            <div class="flex-w flex-tr justify-content-center">
+                <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                    <form method="POST" action="/adminTin/addproduct">
+                        <!--Product name-->
+                        <span class="mtext-110 cl2 ">
+                            Product name
+                        </span>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+                            <input type="text" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full"
+                                name="productname" id="productname" required>
+                        </div>
+
+                        <!--imagePath-->
+                        <span class="mtext-110 cl2 ">
+                            imagePath
+                        </span>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+                            <input type="text" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full" name="imagePath"
+                                id="imagePath" required>
+                        </div>
+
+                        <!--description-->
+                        <span class="mtext-110 cl2 ">
+                            Description
+                        </span>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+                            <input type="text" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full"
+                                name="description" id="description" required>
+                        </div>
+
+                        <!--price-->
+                        <span class="mtext-110 cl2 ">
+                            Price ($)
+                        </span>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+                            <input type="text" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full" name="price"
+                                id="price" required>
+                        </div>
+                        <!--quantity-->
+                          <span class="mtext-110 cl2 ">
+                            Quantity
+                        </span>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+                            <input type="text" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full" name="quantity"
+                                id="quantity" required>
+                        </div>
+
+                        <!--category-->
+                        <div class="addproduct-category">
+                        <span class="mtext-110 cl2 ">
+                            Category
+                        </span>
+                        <div class="rs1-select2 bor8 bg0 option-category">
+                            <select id="menu-category" class="js-select2 menu-category" name="time" onchange="menucategory()">
+                                <option>iPhone</option>
+                                <option>Macbook</option>
+                                <option>AppleWatch</option>
+                                <option>AirPods</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                     
+                        <div class=" bor8 m-b-20 how-pos4-parent">                 
+                            <input type="text" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full" name="category"
+                            id="category" required readonly>
+                        </div>
+
+                        <button type="submit"
+                            class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                            Add Product
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        menucategory = ()=>{
+            var id = document.getElementById("menu-category");
+            var displaytext = id.options[id.selectedIndex].text;
+            document.getElementById("category").value = displaytext;
+        }
+    </script>
+    <%- include('../includes/footer.ejs') %>
+
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+
+
+    <%- include('../includes/end.ejs') %>

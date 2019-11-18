@@ -1,0 +1,46 @@
+.modal-general{
+    height: 100%;
+}
+
+.modal-productname{
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content{
+    display: flex;
+    justify-content: right;
+}
+.modal-image-boxshadow{
+    box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.14);
+}
+
+.modal-detail{
+    height: 45px;
+}
+
+.modal-detail-textsize{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 17px;
+}
+
+.modal-cart-button{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.data-text{
+    color: black;
+}
+.modal-review{
+    margin-top: 25px;
+}
+
+.modal-text-review{
+    margin-top: -4px;
+}
+
+
+

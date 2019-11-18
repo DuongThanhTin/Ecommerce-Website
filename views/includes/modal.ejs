@@ -1,0 +1,175 @@
+<!-- Modal1 -->
+<script>
+	let dataId;
+	function showdata(productname, price, description, imagePath, category, productId) {
+		var link = imagePath.toString();
+		document.getElementById("data_productname").innerHTML = productname;
+		document.getElementById("data_category").innerHTML = category;
+		document.getElementById("data_price").innerHTML = price;
+		document.getElementById("data_description").innerHTML = description;
+		document.getElementById("data_imagePath").src = link;
+		document.getElementById("data_imagePath").href = link;
+		dataId= productId;
+		$("#productQuantity").val(1);
+		$("#productId").val(productId);	
+	}
+
+	function showDetailProduct(){
+		window.location.href='/product/'+dataId
+	}
+</script>
+<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+	<div class="overlay-modal1 js-hide-modal1"></div>
+
+	<div class="container">
+		<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+			<button class="how-pos3 hov3 trans-04 js-hide-modal1">
+				<img src="/images/icons/icon-close.png" alt="CLOSE">
+			</button>
+
+			<div class="row">
+				<div class="col-md-6 col-lg-7 p-b-30">
+					<div class="p-l-25 p-r-30 p-lr-0-lg">
+						<div class="wrap-slick3  modal-image-boxshadow flex-sb flex-w">
+							<div class="slick3 gallery-lb">
+								<div class="item-slick3">
+									<div class="wrap-pic-w pos-relative">
+										<img id="data_imagePath" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+											id="data_imagePath">
+											<i class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-5 p-b-30">
+					<div class="p-r-50 p-t-5 p-lr-0-lg modal-general">
+						<h2 class="mtext-105 cl2 js-name-detail p-b-14 modal-productname" id="data_productname">
+						</h2>
+						<!--Content-->
+						<div class="p-t-33">
+							<div class="flex-w flex-r-m p-b-10 modal-detail">
+								<div class="size-203 modal-detail-textsize">
+									Price ($):
+								</div>
+								<div class="size-204 respon6-next">
+									<div id="data_price" class="data-text modal-detail-textsize"></div>
+								</div>
+							</div>
+							<div class="flex-w flex-r-m p-b-10 modal-detail">
+								<div class="size-203 modal-detail-textsize">
+									Category:
+								</div>
+								<div class="size-204 respon6-next">
+									<div id="data_category" class="data-text modal-detail-textsize"></div>
+								</div>
+							</div>
+							<div class="flex-w flex-r-m p-b-10 modal-detail">
+								<div class="size-203 modal-detail-textsize ">
+									Description:
+								</div>
+								<div class="size-204 respon6-next">
+									<div id="data_description" class="data-text modal-detail-textsize"></div>
+								</div>
+							</div>
+							<div class="flex-w flex-r-m p-b-10 modal-detail">
+								<div class="size-203 modal-detail-textsize">
+									Quantity:
+								</div>
+								<div class="size-204 flex-w flex-m respon6-next">
+									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+											<i class="fs-16 zmdi zmdi-minus"></i>
+										</div>
+
+										<input class="mtext-104 cl3 txt-center num-product" type="number"
+											name="productNumber" id="productQuantity" value="1">
+
+										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+											<i class="fs-16 zmdi zmdi-plus"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="flex-w p-b-10 modal-detail modal-review">
+								<div class="size-203 ">
+									<img src="/images/star.svg" alt="#" />
+									<img src="/images/star.svg" alt="#" />
+									<img src="/images/star.svg" alt="#" />
+									<img src="/images/star.svg" alt="#" />
+									<img src="/images/star.svg" alt="#" />
+								</div>
+								<div class="size-203  modal-text-review modal-detail-textsize">
+									| 10 Reviews
+								</div>
+							</div>
+
+							<div class="flex-w p-b-10 modal-cart-button">
+								<button id="modal-btn-showdetail" onclick="showDetailProduct()"
+									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15  modal-addtocart-button">
+									View detail
+								</button>
+								<input type="hidden" id="productId" name="productId" value="">
+								<button onclick="postCartModal()"
+									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15  modal-addtocart-button">
+									Add to cart
+								</button>
+							</div>
+						</div>
+
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script>
+	function postCartModal() {
+		var quantity = $("#productQuantity").val();
+		var productId = $("#productId").val();
+		var productName = $('#data_productname').text();
+
+		$.ajax({
+			url: "/cart",
+			type: "POST",
+			data: {
+				productId: productId,
+				productNumber: quantity
+			},
+			success: function (res) {
+				swal(productName, " is added to cart !", "success");
+				//refreshCartOrder();
+			},
+			error: function (err) {
+				console.log(err)
+				swal("Failed", "success");
+			}
+		});
+
+	}
+
+/*
+	function refreshCartOrder() {
+		$.ajax({
+			url: '/api/cart',
+			type: 'GET',
+			dataType: 'json',
+		}).done(function (res) {
+			const sumPrice = res.sumPrice;
+			const products = res.products;
+			console.log(products.length)
+			$('#shopCart').attr('data-notify', products.length);
+			$('#sumPrice').html(sumPrice)
+			$('#cart-product-list').html(TemplateCartRSide.createProductList(products));
+		});
+	}*/
+</script>

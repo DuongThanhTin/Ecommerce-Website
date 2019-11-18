@@ -1,0 +1,118 @@
+<%- include('../includes/head.ejs') %>
+<body class="animsition">
+
+	<%- include('../includes/cart-r-side.ejs') %>	
+
+<!-- Header -->
+    <%- include('../includes/header.ejs') %>
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/macbook2.jpg');">
+		<h2 class="ltext-105 cl0 txt-center"style ='color: chocolate'>
+			Sign up
+		</h1>
+	</section>	
+
+
+	<!-- Content page -->
+	<section class="bg0 p-t-104 p-b-116">
+            <div class="container" >
+                <% if (errorMessage) { %>
+                    <div class="user-message user-message--error m-b-20"><%= errorMessage %></div>
+                <% } %>
+                <div class="flex-w flex-tr justify-content-center">
+                    <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md" >
+                        <form method="POST" action="/signup">
+                            <!--Username-->
+                            <span class="mtext-110 cl2 ">
+                                Username
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                                <input type="text" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" name="username" id="username" placeholder= 'Username'> 
+                                <img class="how-pos4 pointer-none" src="images/icons/icon-name.png" alt="mailicon">
+                            </div>
+                    
+                            <!--Password-->
+                            <span class="mtext-110 cl2 ">
+                                Password
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                                <input type="password" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" name="password" id="password" placeholder='Password'>       
+                                <img class="how-pos4 pointer-none" src="images/icons/icon-heart-01.png" alt="mailicon">                     
+                            </div>
+
+                            <!--Confirm Password-->
+                            <span class="mtext-110 cl2 ">
+                                Comfirm Password
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                                <input type="password" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" name="confirmpassword" id="confirmpassword" placeholder='ConfirmPassword'>             
+                                <img class="how-pos4 pointer-none" src="images/icons/icon-heart-01.png" alt="mailicon">                     
+               
+                            </div>
+                             <!--Email-->
+                             <span class="mtext-110 cl2 ">
+                                Email
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                                <input type="email" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30l" name="email" id="email" placeholder='Email' require>            
+                                <img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="mailicon">
+                
+                            </div>
+
+                            <!--Age-->
+                            <span class="mtext-110 cl2 ">
+                                Age
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                                <input type="text" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30l" name="age" id="age" placeholder='Age ' require>            
+                                <img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="mailicon">
+                
+                            </div>
+                             <!--Phone-->
+                            <span class="mtext-110 cl2 ">
+                                Phone
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                                <input type="text" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" name="phone" id="phone" placeholder='Phone' require>          
+                                <img class="how-pos4 pointer-none" src="images/icons/icon-phone-call.png" alt="mailicon">
+                  
+                            </div>
+                                <!--Address-->
+                                <span class="mtext-110 cl2 ">
+                                    Address
+                                </span>
+                                <div class="bor8 m-b-20 how-pos4-parent">
+                                    <input type="text" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" name="address" id="address" placeholder='Address' require>          
+                                    <img class="how-pos4 pointer-none" src="images/icons/icon-phone-call.png" alt="mailicon">
+                      
+                                </div>
+                            <button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                                Sign up
+                            </button>
+
+                            <p class="aa-lost-password p-t-40"><a href="/forgot">Lost your password?</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+	
+	<!-- Banner -->      
+    <%- include('../includes/Banner.ejs') %>	
+
+	<!-- Map -->
+	<div class="map">
+		<div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+	</div>
+
+	<%- include('../includes/footer.ejs') %>			
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+	
+
+<%- include('../includes/end.ejs') %>

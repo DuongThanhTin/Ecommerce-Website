@@ -1,0 +1,66 @@
+<%- include('../includes/head.ejs') %>
+<body class="animsition">
+
+<!-- Header -->
+    <%- include('../includes/header.ejs') %>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/iphone-xr1.jpg');">
+		<h2 class="ltext-105 cl0 txt-center" style ='color: aquamarine'>
+			Login 
+		</h1>
+	</section>	
+
+ 
+	<!-- Content page -->
+	<section class="bg0 p-t-104 p-b-116">
+            <div class="container" >
+                <% if (errorMessage) { %>
+                    <div class="user-message user-message--error m-b-20"><%= errorMessage %></div>
+                <% } %>
+                <div class="flex-w flex-tr justify-content-center">
+                    <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md" >
+                        <form method="POST" action="/login">
+                            <span class="mtext-110 cl2 ">
+                                Username
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                                <input type="text" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full" name="username" placeholder='Username'>
+           
+                            </div>
+                            <span class="mtext-110 cl2 ">
+                                Password
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                                <input type="password" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full" name="password" placeholder='Password'>                            
+                            </div>
+
+                            <button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                                Login
+                            </button>
+                        
+                            <p class="aa-lost-password p-t-40"><a href="/forgot">Forget the password?</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+	<!-- Banner -->      
+	<%- include('../includes/Banner.ejs') %>	
+    
+	
+	<!-- Map -->
+	<div class="map">
+		<div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+	</div>
+
+	<%- include('../includes/footer.ejs',{userr: userr}) %>			
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+<%- include('../includes/end.ejs') %>

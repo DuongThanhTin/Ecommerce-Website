@@ -1,0 +1,79 @@
+<%- include('../includes/head.ejs') %>
+<body class="animsition">
+
+<!-- Header -->
+    <%- include('../includes/header.ejs') %>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background: chocolate">
+		<h2 class="ltext-105 cl0 txt-center" style ='color: aquamarine'>
+			Account 
+		</h1>
+	</section>	
+
+ 
+	<!-- Content page -->
+	<section class="bg0 p-t-104 p-b-116">
+            <div class="container" >
+                <div class="flex-w flex-tr justify-content-center">
+                    <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md" >
+                            <span class="mtext-110 cl2 ">
+                                Username
+                            </span>
+                            <form method="POST" action="/account">
+                                <input type="hidden" value="<%= currentUser._id %>" name="_id" id="_id">
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                              <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full"> <%= currentUser.username%></div> 
+                                
+                            </div>
+                            <span class="mtext-110 cl2 ">
+                                Age
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                               
+                                    <input type="text" name="age" id="age" class="form-control" placeholder="age" value="<%= currentUser.age %>">
+    
+                            </div>
+
+                            <span class="mtext-110 cl2 ">
+                                Phone
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                
+                                        <input type="text" name="phone" id="phone" class="form-control" placeholder="phone" value="<%= currentUser.phone %>">
+                              
+    
+                            </div>
+
+                            <span class="mtext-110 cl2 ">
+                                Role
+                            </span>
+                            <div class="bor8 m-b-20 how-pos4-parent">
+                                    <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full"> <%= currentUser.role%></div> 
+                              
+                            </div>
+                            <button type="submit" class="btn btn-danger waves-effect waves-light">Save
+                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    
+	
+	<!-- Map -->
+	<div class="map">
+		<div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+	</div>
+
+	<%- include('../includes/footer.ejs') %>			
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+<%- include('../includes/end.ejs') %>
