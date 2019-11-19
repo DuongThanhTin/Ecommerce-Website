@@ -54,6 +54,8 @@ module.exports = {
     const age = req.body.age;
     const phone = req.body.phone;
     const role = req.body.role;
+    const email = req.body.email;
+    const address = req.body.address;
     const created = req.body.created;
     console.log("TCL: ", req.body._id);
     console.log("TCL: ", username);
@@ -63,6 +65,8 @@ module.exports = {
         user.age = age;
         user.phone = phone;
         user.role = role;
+        user.email = email;
+        user.address = address;
         user.created = created;
         return user.save();
       })

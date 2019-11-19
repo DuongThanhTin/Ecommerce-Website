@@ -144,7 +144,7 @@ module.exports = {
             req.session.token = token;
             req.session.role = user.role;
             return req.session.save(err => {
-              res.redirect("/");
+             res.redirect("/adminTin");
             });
           } else {
             const token = jwt.sign(
@@ -159,6 +159,10 @@ module.exports = {
             req.session.role = user.role;
             return req.session.save(err => {
               res.redirect("/");
+              /*res.render("homepage", {
+                path: "/",
+                user: user
+              }); */
             });
           }
         } else {
@@ -222,6 +226,7 @@ module.exports = {
   },
 
   getCart: function(req,res,next){
+    console.log(req.user)
     req.user
     .populate("cart.items.productId")
     .execPopulate()

@@ -1,0 +1,12 @@
+.account-input{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.account-input-detail{
+    border: none;   
+}
+
+.account-input-view{
+    padding: .5rem .75rem;
+}

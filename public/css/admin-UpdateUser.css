@@ -1,0 +1,8 @@
+.updateuser-content{
+    position: relative;
+}
+.updateuser-image{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

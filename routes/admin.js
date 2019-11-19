@@ -5,12 +5,12 @@ const cors = require("cors");
 const AdminController = require("../apicontrollers/admin");
 
 const isAuthAdmin=require('../middleware/is-auth-admin')
-
+const isAuth=require('../middleware/is-auth')
 router.use(cors());
 
 
 
-router.get("/adminTin",isAuthAdmin, AdminController.getAdmin);
+router.get("/adminTin",isAuth,isAuthAdmin, AdminController.getAdmin);
 
 //Manager User
 router.get("/adminTin/managerusers",isAuthAdmin, AdminController.getManagerUsers);

@@ -147,7 +147,7 @@
 			},
 			success: function (res) {
 				swal(productName, " is added to cart !", "success");
-				//refreshCartOrder();
+				refreshCartOrder();
 			},
 			error: function (err) {
 				console.log(err)
@@ -157,7 +157,7 @@
 
 	}
 
-/*
+
 	function refreshCartOrder() {
 		$.ajax({
 			url: '/api/cart',
@@ -171,5 +171,5 @@
 			$('#sumPrice').html(sumPrice)
 			$('#cart-product-list').html(TemplateCartRSide.createProductList(products));
 		});
-	}*/
+	}
 </script>

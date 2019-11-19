@@ -10,8 +10,6 @@
 			Account 
 		</h1>
 	</section>	
-
- 
 	<!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
             <div class="container" >
@@ -23,35 +21,65 @@
                             <form method="POST" action="/account">
                                 <input type="hidden" value="<%= currentUser._id %>" name="_id" id="_id">
                             <div class="bor8 m-b-20 how-pos4-parent">
-                              <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full"> <%= currentUser.username%></div> 
+                              <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full">
+                                  <div class="account-input account-input-view">
+                                    <%= currentUser.username%>
+                                  </div>
+                              </div> 
                                 
                             </div>
                             <span class="mtext-110 cl2 ">
                                 Age
                             </span>
                             <div class="bor8 m-b-20 how-pos4-parent">
-                               
-                                    <input type="text" name="age" id="age" class="form-control" placeholder="age" value="<%= currentUser.age %>">
-    
+                                <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full">
+                                        <div class="account-input">
+                                            <input type="text" name="age" id="age" class="form-control account-input-detail" placeholder="age" value="<%= currentUser.age %>">
+                                        </div>
+                                </div> 
                             </div>
 
                             <span class="mtext-110 cl2 ">
-                                Phone
-                            </span>
-                            <div class="bor8 m-b-20 how-pos4-parent">
-                
-                                        <input type="text" name="phone" id="phone" class="form-control" placeholder="phone" value="<%= currentUser.phone %>">
-                              
-    
-                            </div>
+                                    Email
+                                </span>
+                                <div class="bor8 m-b-20 how-pos4-parent">
+                                    <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full">
+                                            <div class="account-input">
+                                                <input type="text" name="email" id="email" class="form-control account-input-detail" placeholder="Email" value="<%= currentUser.email %>">
+                                            </div>
+                                    </div> 
+                                </div>
+                                <span class="mtext-110 cl2 ">
+                                        Phone
+                                    </span>
+                                    <div class="bor8 m-b-20 how-pos4-parent">
+                                        <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full">
+                                                <div class="account-input">
+                                                    <input type="text" name="phone" id="phone" class="form-control account-input-detail" placeholder="Phone" value="<%= currentUser.phone %>">
+                                                </div>
+                                        </div> 
+                                    </div>
+                                    <span class="mtext-110 cl2 ">
+                                            Address
+                                        </span>
+                                        <div class="bor8 m-b-20 how-pos4-parent">
+                                            <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full">
+                                                    <div class="account-input">
+                                                        <input type="text" name="address" id="address" class="form-control account-input-detail" placeholder="address" value="<%= currentUser.address %>">
+                                                    </div>
+                                            </div> 
+                                        </div>
 
                             <span class="mtext-110 cl2 ">
                                 Role
                             </span>
                             <div class="bor8 m-b-20 how-pos4-parent">
-                                    <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full"> <%= currentUser.role%></div> 
-                              
-                            </div>
+                                    <div class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full">
+                                        <div class="account-input account-input-view">
+                                          <%= currentUser.role%>
+                                        </div>
+                                    </div> 
+                                    </div>
                             <button type="submit" class="btn btn-danger waves-effect waves-light">Save
                                     <i class="fa fa-upload" aria-hidden="true"></i>
                             </button>

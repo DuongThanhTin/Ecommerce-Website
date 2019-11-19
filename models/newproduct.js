@@ -33,6 +33,11 @@ const newProductSchema = new Schema({
         type: String,
         default: Date.now
     },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
+    }
    
 })
 
