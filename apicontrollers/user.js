@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const UserModel = require("../models/user");
 const ProductModel = require("../models/newproduct");
 const jwt = require("jsonwebtoken");
+const url = require("url")
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -133,7 +134,7 @@ module.exports = {
           req.session.isLoggedIn = true;
           req.session.user = user;
           if (user.role == "admin") {
-            const token = jwt.sign(
+          /*  const token = jwt.sign(
               {
                 email: user.email,
                 userID: user._id,
@@ -141,13 +142,13 @@ module.exports = {
               },
               process.env.SECRETKEY_TOKEN
             );
-            req.session.token = token;
+            req.session.token = token;*/
             req.session.role = user.role;
             return req.session.save(err => {
              res.redirect("/adminTin");
             });
           } else {
-            const token = jwt.sign(
+           /* const token = jwt.sign(
               {
                 email: user.email,
                 userID: user._id,
@@ -155,14 +156,14 @@ module.exports = {
               },
               process.env.SECRETKEY_TOKEN
             );
-            req.session.token = token;
+            req.session.token = token;*/
             req.session.role = user.role;
+            console.log(user)
             return req.session.save(err => {
-              res.redirect("/");
-              /*res.render("homepage", {
-                path: "/",
-                user: user
-              }); */
+              res.redirect(url.format({
+                pathname:"/",
+                user: user,
+              }));
             });
           }
         } else {
@@ -225,33 +226,79 @@ module.exports = {
       });
   },
 
+  //Cart
+  getCartPage: function(req,res,next){
+    UserModel.findById(req.session.user._id)
+    .then(user=>{
+     user.populate("cart.items.productId")
+     .execPopulate()
+     .then(user => {
+      let products = user.cart.items;
+      console.log(products);
+      res.render("product/page-cart", {
+        path: "/cart",
+        pageTitle: "Your Cart",
+        products: products,
+        sum: user.cart.sum,
+        userr: user
+      });
+     })
+   })
+     .catch(err => console.log(err));
+  },
+
+  //API show cart
   getCart: function(req,res,next){
-    console.log(req.user)
-    req.user
-    .populate("cart.items.productId")
+   UserModel.findById(req.session.user._id)
+   .then(user=>{
+    user.populate("cart.items.productId")
     .execPopulate()
     .then(user => {
+      console.log("TCL: user.cart.sum", user.cart.sum)
         res.json({
-            "sumPrice" : user.cart.sum,
+            "sumPrice" : user.cart.sum,        
             "products": user.cart.items
         })
     })
+  })
     .catch(err => console.log(err));
   },
-
+  
+  //Add Product
   postCart: function(req,res,next){
     console.log("Add Product to Cart");
     const productId = req.body.productId;
     console.log("TCL: productId", productId)
     var newQuantity = req.body.productNumber; 
-    console.log("TCL: newQuantity", newQuantity)
-    
+    console.log("TCL: newQuantity", newQuantity) 
     ProductModel.findById(productId)
     .then(product => {
-        return req.user.addToCart(product, newQuantity);
+        UserModel.findById(req.session.user._id)
+        .then(user=>{
+          return user.addToCart(product, newQuantity);
+        })
     })
     .then(result => {
         res.redirect("/");
     })
   },
+
+
+   //Remove
+   postRemoveProductCart: function(req, res, next) {
+    const productID = req.body.productId;
+    console.log("TCL: productID", productID)
+    UserModel.findById(req.session.user._id)
+    .then(user=>{
+      ProductModel.findById(productID)
+      .then(productDetail=>{
+        return user.removeProductCart(productID,productDetail);
+      })
+     
+    })
+    .then(result => {
+      res.redirect("/");
+    })
+     .catch(err => console.log(err));
+    },
 };

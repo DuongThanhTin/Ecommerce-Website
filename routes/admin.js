@@ -13,16 +13,16 @@ router.use(cors());
 router.get("/adminTin",isAuth,isAuthAdmin, AdminController.getAdmin);
 
 //Manager User
-router.get("/adminTin/managerusers",isAuthAdmin, AdminController.getManagerUsers);
-router.get("/adminTin/managerusers/update/:_id",isAuthAdmin, AdminController.getUpdate);
-router.post("/adminTin/managerusers/update",isAuthAdmin, AdminController.postUpdateUser);
-router.get("/adminTin/managerusers/delete/:_id",isAuthAdmin, AdminController.getRemoveUser);
+router.get("/adminTin/managerusers",isAuth,isAuthAdmin, AdminController.getManagerUsers);
+router.get("/adminTin/managerusers/update/:_id",isAuth,isAuthAdmin, AdminController.getUpdate);
+router.post("/adminTin/managerusers/update",isAuth,isAuthAdmin, AdminController.postUpdateUser);
+router.get("/adminTin/managerusers/delete/:_id",isAuth,isAuthAdmin, AdminController.getRemoveUser);
 
 //Manager Product
-router.get("/adminTin/managerproducts",isAuthAdmin, AdminController.getListiPhone);
+router.get("/adminTin/managerproducts",isAuth,isAuthAdmin, AdminController.getListiPhone);
 
 //Manager Macbook
-router.get("/adminTin/managermacbook",isAuthAdmin, AdminController.getListMacbook);
+router.get("/adminTin/managermacbook",isAuth,isAuthAdmin, AdminController.getListMacbook);
 
 //Manager Apple Watch
 

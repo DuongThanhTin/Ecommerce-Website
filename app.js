@@ -8,7 +8,11 @@ const multer = require('multer');
 const bodyParser = require("body-parser");
 const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session);
+const passport = require('passport')
+
+
 const htmlcontroller = require('./apicontrollers/htmlcontroller')
+
 require('dotenv').config()
 
 //Router
@@ -65,14 +69,15 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 //- Dùng để đưa thông tin message 
 app.use(flash())
-
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use((req, res, next) => {  
   // gui ve 1 bien trong moi 1 route
   res.locals.isAuthenticated = req.session.isLoggedIn;
   res.locals.Manager = req.session.isManager;
   res.locals.currentUser = req.session.user;
-  
+  res.locals.session = req.session;
   next();
 });
 

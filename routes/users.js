@@ -23,7 +23,10 @@ router.get("/account/:_id", isAuth, UserController.getAccount);
 router.post("/account", isAuth, UserController.postEditUser);
 //router.get('/account/:_id',UserController.getEditUser)
 
+//Cart
+router.get("/cart", isAuth, UserController.getCartPage);
 router.get("/api/cart", isAuth, UserController.getCart);
 
 router.post("/cart", isAuth, UserController.postCart);
+router.post("/removecartproduct", isAuth, UserController.postRemoveProductCart);
 module.exports = router;

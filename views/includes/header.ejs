@@ -151,7 +151,7 @@
 	</div>
 </header>
 
-<script>
+<script type="text/javascript">
 	$(document).ready(function(){
 		$.ajax({
 			url: '/api/cart',
@@ -159,6 +159,7 @@
 			dataType: 'json',
 		}).done(function(res){
 			const sumPrice = res.sumPrice;
+            console.log("TCL: sumPrice", sumPrice)
 			const products = res.products;
 			console.log(products.length)
 			$('#shopCart').attr('data-notify', products.length);
@@ -168,26 +169,34 @@
 	});
 
 	const TemplateCartRSide = (function(){
-		const createProductList = function(products){
+		const createProductList = function(listproducts){
 			let rs = '';
-			for (let i=0; i < products.length; i++){
-				const product = products[i];
-				const productId = product.productId;
+			for (let i=0; i < listproducts.length; i++){
+				const product = listproducts[i];
+
+				const productId_Arr = product.productId;
 				const quantity = product.quantity;
+				var ID = "'"+productId_Arr._id+"'"
+				var NAME = "'"+productId_Arr.productname+"'";
+
 				let template = '' +
 						'   <li class="header-cart-item flex-w flex-t m-b-12">  '  +
 						'   	<div class="header-cart-item-img">  '  +
-						'   		<img src="' + productId.imageUrl + '" alt="IMG">  '  +
+						'   		<img src="' + productId_Arr.imagePath + '" alt="IMG"  >  '  +
 						'   	</div>  '  +
 						'     '  +
 						'   	<div class="header-cart-item-txt p-t-8">  '  +
-						'   		<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">  '  +
-										productId.name  +
+						'   		<a id="data-productname" href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">  '  +
+								productId_Arr.productname  +
 						'   		</a>  '  +
 						'   		<span class="header-cart-item-info">  '  +
-										quantity + ' x $' + productId.price  +
+										quantity + ' x $' + productId_Arr.price  +
 						'   		</span>  '  +
 						'   	</div>  '  +
+						' 			<input type="hidden" id="productId" name="productId" value="'+ID+'">'	+
+						'		<div>'+						
+						'			<img id="cartproduct-close" class="cartproduct-close" src="/images/close-1.svg" alt="IMG" onclick="postRemoveCartProduct('+ID+','+NAME+')">'+
+						'		</div>'
 						'  </li>  ' ;
 				rs += template
 			}
@@ -197,4 +206,43 @@
 			createProductList: createProductList
 		}
 	}());
+
+	/*$(document).ready(function(){
+		document.getElementById('cartproduct-close').addEventListener('click',function(e){
+
+		})
+	})*/
+	function postRemoveCartProduct(ID,NAME) {
+		$.ajax({
+			url: "/removecartproduct",
+			method: "POST",
+			data: {
+				productId: ID,
+			},
+			success: function (res) {
+				swal(NAME, " Remove product in cart is success !", "success");
+				refreshCartOrder();
+			},
+			error: function (err) {
+				console.log(err)
+				swal("Failed", "Remove Failed");
+			}
+		});
+
+	}
+
+	function refreshCartOrder() {
+		$.ajax({
+			url: '/api/cart',
+			type: 'GET',
+			dataType: 'json',
+		}).done(function (res) {
+			const sumPrice = res.sumPrice;
+			const products = res.products;
+			console.log(products.length)
+			$('#shopCart').attr('data-notify', products.length);
+			$('#sumPrice').html(sumPrice)
+			$('#cart-product-list').html(TemplateCartRSide.createProductList(products));
+		});
+	}
 </script>

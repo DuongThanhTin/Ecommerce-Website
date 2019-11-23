@@ -1,0 +1,8 @@
+.cartproduct-close{
+    position: relative;
+    top: -74px;
+    left: 279px;
+}
+.cartproduct-close:hover{
+    cursor: pointer;
+}
