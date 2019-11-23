@@ -134,7 +134,7 @@ module.exports = {
           req.session.isLoggedIn = true;
           req.session.user = user;
           if (user.role == "admin") {
-          /*  const token = jwt.sign(
+            const token = jwt.sign(
               {
                 email: user.email,
                 userID: user._id,
@@ -142,13 +142,13 @@ module.exports = {
               },
               process.env.SECRETKEY_TOKEN
             );
-            req.session.token = token;*/
+            req.session.token = token;
             req.session.role = user.role;
             return req.session.save(err => {
              res.redirect("/adminTin");
             });
           } else {
-           /* const token = jwt.sign(
+            const token = jwt.sign(
               {
                 email: user.email,
                 userID: user._id,
@@ -156,7 +156,7 @@ module.exports = {
               },
               process.env.SECRETKEY_TOKEN
             );
-            req.session.token = token;*/
+            req.session.token = token;
             req.session.role = user.role;
             console.log(user)
             return req.session.save(err => {
@@ -284,7 +284,7 @@ module.exports = {
   },
 
 
-   //Remove
+   //Remove Product in Cart
    postRemoveProductCart: function(req, res, next) {
     const productID = req.body.productId;
     console.log("TCL: productID", productID)

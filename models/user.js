@@ -89,7 +89,6 @@ userSchema.methods.addToCart = function(product, newQuantity) {
 userSchema.methods.removeProductCart = function(product, productDetail) {
   var listProductCart = this.cart.items;
   var sum = this.cart.sum;
-  console.log("sum1 ", sum);
   for (var i = 0; i < listProductCart.length; i++) {
     if (listProductCart[i].productId == product) {
       sum = sum - productDetail.price * listProductCart[i].quantity;

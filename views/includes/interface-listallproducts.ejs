@@ -39,7 +39,7 @@
             </div>
             <div class="block1-txt-child1 flex-col-l">
                     <span class="block1-name ltext-102 trans-04 p-b-8 translate">
-                        AirPods
+                        All Products
                     </span>
             </div>
             <!-- Search product -->
@@ -63,11 +63,11 @@
     
    
         <div class="row isotope-grid">
-                <% listproduct.forEach(function (product) { %>
+                <% listproducts.forEach(function (product) { %>
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">	
                             <div class="block2">
                                 <div class="block2-pic hov-img0">
-                                    <img src="<%= airpod.imagePath %>" alt="IMG-PRODUCT">
+                                    <img src="<%= product.imagePath %>" alt="IMG-PRODUCT">
 
                                     <a  href="#"
                                     onclick="showdata('<%= product.productname %>', '<%= product.price %>','<%= product.description %>',
@@ -90,7 +90,13 @@
                                             $<%=product.price %>
                                         </span>
                                     </div>
-
+                                    <div>
+                                        <img src="/images/star.svg" alt="/" />
+                                        <img src="/images/star.svg" alt="/" />
+                                        <img src="/images/star.svg" alt="/" />
+                                        <img src="/images/star.svg" alt="/" />
+                                        <img src="/images/star.svg" alt="/" />
+                                    </div>
                                     <div class="block2-txt-child2 flex-r p-t-3">
                                         
                                     </div>
@@ -107,5 +113,5 @@
             </a>
         </div> -->
     </div>
-    
+
 </section>
