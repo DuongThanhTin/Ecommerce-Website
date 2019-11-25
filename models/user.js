@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
+const ProductModel = require("../models/newproduct");
+const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: {
     type: String,
@@ -53,6 +54,7 @@ const userSchema = new Schema({
   productOrder: []
 });
 
+//Add to Cart
 userSchema.methods.addToCart = function(product, newQuantity) {
   const cartProductIndex = this.cart.items.findIndex(cp => {
     return cp.productId.toString() === product._id.toString();
@@ -86,6 +88,7 @@ userSchema.methods.addToCart = function(product, newQuantity) {
   return this.save();
 };
 
+//Remove
 userSchema.methods.removeProductCart = function(product, productDetail) {
   var listProductCart = this.cart.items;
   var sum = this.cart.sum;
@@ -107,8 +110,78 @@ userSchema.methods.removeProductCart = function(product, productDetail) {
   return this.save();
 };
 
+//Update
+userSchema.methods.updatedCart = function(newUpdateCart){
+  var listUpdateProductCart = [...this.cart.items]
+  var newSum=0;
+  ProductModel.find()
+  .then(product=>{
+    listUpdateProductCart.forEach((item,index)=>{
+      product.forEach(items=>{
+        if (items._id.toString() == listUpdateProductCart[index].productId.toString()) {
+          for(var i =0; i<newUpdateCart.length; i++){
+            if(newUpdateCart[i].ID.toString() == listUpdateProductCart[index].productId.toString()){
+              listUpdateProductCart[index].quantity = newUpdateCart[i].Quantity;
+              console.log("TCL: userSchema.methods.updatedCart -> listUpdateProductCart[index].quantity", listUpdateProductCart[index].quantity)
+              newSum = newSum + parseFloat(items.price) * parseFloat( newUpdateCart[i].Quantity);
+              console.log('newSum', newSum)
+            }
+          }
+        }
+      })
+    })
+  })
+  .then(result=>{
+    console.log('asdasdsadadsad ',newSum)
+    const updatedCart = {
+      items: listUpdateProductCart,
+      sum: newSum
+    };
+    this.cart = updatedCart;
+    console.log("TCL: cart =>", this.cart);
+    return this.save();
+  })
+ 
+}
+
+
 const userMongoose = mongoose.model("user", userSchema);
 
 //Module.exports
 
+
 module.exports = userMongoose;
+
+/* update CArt
+ var listProductCart = this.cart.items;
+  var sum = this.cart.sum;
+  for (var i = 0; i < listProductCart.length; i++) {
+
+      if(listProductCart[i].productId== productID){
+      console.log('alo',action)
+      switch(action){
+        case "add":
+          listProductCart[i].quantity++;
+          sum = sum + productDetail.price; 
+          console.log("TCL: userSchema.methods.updatedCart -> sum", sum)
+          break;
+        case "remove":
+          listProductCart[i].quantity--;
+          sum = sum - productDetail.price;
+          console.log("TCL: userSchema.methods.updatedCart -> sum", sum)
+          if(listProductCart[i].quantity<1) listProductCart.splice(i,1);
+          break;
+        default:
+          console.log('Update Cart');
+          break;
+      }
+      break;
+    }
+  }
+  const updatedCart = {
+    items: listProductCart,
+    sum: sum
+  };
+  this.cart = updatedCart;
+  console.log("TCL: cart =>", this.cart);
+  return this.save(); */

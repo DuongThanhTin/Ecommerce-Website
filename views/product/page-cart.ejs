@@ -4,10 +4,6 @@
 	
 	<%- include('../includes/header.ejs') %>
 	<%- include('../includes/cart-r-side.ejs') %>	
-
-
-		
-
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85" action="/updatecart" method="POST">
 		<div class="container">
@@ -26,7 +22,7 @@
 
 								<% if (products.length > 0) { %>
 									<% products.forEach(item => { %>
-										<tr class="table_row">
+										<tr class="table_row" >
 											<td class="column-1">
 												<div class="how-itemcart1">
 													<img src="<%= item.productId.imagePath %>" alt="IMG">
@@ -41,13 +37,13 @@
 														<i class="fs-16 zmdi zmdi-minus"></i>
 													</div>
 
-													<input class="mtext-104 cl3 txt-center num-product" type="number" name="productNum" id="productNum" value="<%= item.quantity %>">
+													<input class="mtext-104 cl3 txt-center num-product" type="number" name="productQuantity" id="productQuantity" value="<%= item.quantity %>">
 
-													<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+													<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" >
 														<i class="fs-16 zmdi zmdi-plus"></i>
 													</div>
 													
-													<input type="hidden" name="productId" value="<%= item.productId._id %>">
+													<input type="hidden" name="productId" id="productId" value="<%= item.productId._id %>">
 												</div>
 											</td>
 
@@ -139,7 +135,7 @@
 							</div>
 
 							<div class="size-209 p-t-1">
-								<span class="mtext-110 cl2">
+								<span class="mtext-110 cl2" id="sumPrice">
 									$ <%= sum %>
 								</span>
 							</div>
@@ -167,23 +163,75 @@
 	<%- include('../includes/modal.ejs') %>
 <%- include('../includes/end.ejs') %>
 <script>
-	
-	var AddToCart = (function(){
-		var getQuantityOfProduct = function() {
-			var result = $('#pQuantity').val();
-			return result;
-		};
-		var plusProduct = function() {
-			var num = getQuantityOfProduct() + 1;
-			$('#pQuantity').val(num);
-			console.log("Number of product after plus: " + num);
-		};
 
-		var minusProduct = function() {
-			var num = getQuantityOfProduct() - 1;
-			$('#pQuantity').val(num);
-			console.log("Number of product after minus: " + num);
-		};
-		return
-	}());
+	$(document).ready(function(){
+		$.ajax({
+			url: '/api/cart',
+			type: 'GET',
+			dataType: 'json',
+		}).done(function(res){
+			const sumPrice = res.sumPrice;
+            console.log("TCL: sumPrice", sumPrice)
+			const products = res.products;
+			console.log(products.length)
+			$('#sumPrice').html(sumPrice)
+		});
+	});
+
+
+	/*function increaseQuantity(ID,action){
+		$.ajax({
+			url: "/cart/update/"+ID+"?action="+action,
+			method: "POST",
+			data: {
+				productId: ID,
+			},
+			success: function (res) {
+				refreshCartOrder()
+			},
+			error: function (err) {
+				console.log(err)
+				swal("Failed", "Add Failed");
+			}
+		});
+	}
+
+	function decreaseQuantity(ID,action){
+		$.ajax({
+			url: "/cart/update/"+ID+"?action="+action,
+			method: "POST",
+			data: {
+				productId: ID,
+			},
+			success: function (res) {
+				refreshCartOrder()
+			},
+			error: function (err) {
+				console.log(err)
+				swal("Failed", "Remove Failed");
+			}
+		});
+	}
+
+	function newQuantity(ID,action){
+		console.log(products.length)
+	}
+	*/
+
+	
+
+	function refreshCartOrder() {
+		$.ajax({
+			url: '/api/cart',
+			type: 'GET',
+			dataType: 'json',
+		}).done(function (res) {
+			const sumPrice = res.sumPrice;
+			const products = res.products;
+			console.log(products.length)
+			$('#shopCart').attr('data-notify', products.length);
+			$('#sumPrice').html(sumPrice)
+			$('#cart-product-list').html(TemplateCartRSide.createProductList(products));
+		});
+	}
 </script>

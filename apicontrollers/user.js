@@ -301,4 +301,57 @@ module.exports = {
     })
      .catch(err => console.log(err));
     },
+
+  //Update Cart
+  postUpdateCart: function(req,res,next){
+    var {productQuantity,productId} = req.body;
+    var newQuantityArr = []
+    var productIdArr = []
+    var newUpdateItems=[]
+    if (typeof productId == 'string') {
+      newQuantityArr = productQuantity.split(",");
+      productIdArr = productId.split(",");
+      
+    } 
+    else {
+        newQuantityArr = productQuantity;
+        productIdArr = productId;
+  
+    }
+    console.log("TCL: newQuantityArr", newQuantityArr)
+    console.log("TCL: productIdArr", productIdArr)
+    UserModel.findById(req.session.user._id)
+    .then(user=>{
+      for(var i=0;i<productIdArr.length;i++){
+        newUpdateItems.push({
+          ID: productIdArr[i],
+          Quantity: newQuantityArr[i],
+        })
+      }
+      return user.updatedCart(newUpdateItems)
+    })
+    .then(result => {
+      res.redirect("/cart");
+    })
+     .catch(err => console.log(err));
+  },
+
 };
+
+
+//Update cart Post
+/*  var productID = req.params._id;
+    var action = req.query.action;
+    UserModel.findById(req.session.user._id)
+    .then(user=>{
+      ProductModel.findById(productID)
+      .then(productDetail=>{
+        console.log(action)
+        return user.updatedCart(productID,productDetail,action);
+      })
+    })
+    .then(result => {
+      res.redirect("/");
+    })
+     .catch(err => console.log(err));
+     */

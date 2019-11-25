@@ -25,8 +25,14 @@ router.post("/account", isAuth, UserController.postEditUser);
 
 //Cart
 router.get("/cart", isAuth, UserController.getCartPage);
-router.get("/api/cart", isAuth, UserController.getCart);
 
+//-Cart__GetCart
+router.get("/api/cart", isAuth, UserController.getCart);
+//-Cart__AddToCart
 router.post("/cart", isAuth, UserController.postCart);
+//-Cart__Remove
 router.post("/removecartproduct", isAuth, UserController.postRemoveProductCart);
+//-Cart__UpdateCart
+//router.post("/cart/update/:_id", isAuth, UserController.postUpdateCart);
+router.post("/updatecart", isAuth, UserController.postUpdateCart);
 module.exports = router;
