@@ -229,6 +229,18 @@ module.exports = {
 
   //Cart
   getCartPage: function(req,res,next){
+    let message = req.flash("errorMessage");
+    let boolError = req.flash("error")
+    if (message.length > 0) {
+      message = message[0];
+    } else {
+      message = null;
+    }
+    if(boolError.length>0){
+      boolError = 'true';
+    }else{
+      boolError = 'false';
+    }
     UserModel.findById(req.session.user._id)
     .then(user=>{
      user.populate("cart.items.productId")
@@ -241,7 +253,8 @@ module.exports = {
         pageTitle: "Your Cart",
         products: products,
         sum: user.cart.sum,
-        userr: user
+        errorMessage: message,
+        error: boolError,
       });
      })
    })
@@ -343,14 +356,33 @@ module.exports = {
         })
       }
       else if(btnCheckOut=="btnCheckOut"){
-        var promiseCheckOut = new Promise((resolve,reject)=>{
-          resolve( user.CheckOut(name,mobilenumber,address))
-        })
-        promiseCheckOut.then(result=>{
-          setTimeout(function () {
-            return res.redirect("/cart");
-        }, 3000)
-        })
+        const {name,mobilenumber,address}= req.body
+        if(name ==""){
+          req.flash('errorMessage', 'Checkout Failed! Full Name is Empty!');
+          req.flash('error','123')
+          res.redirect("/cart");
+        }
+        else if(mobilenumber ==""){
+          req.flash('errorMessage', 'Checkout Failed! Mobile Number is Empty!');
+          req.flash('error','123')
+          res.redirect("/cart");
+        }
+        else if(address ==""){
+          req.flash('errorMessage', 'Checkout Failed! Address is Empty!');
+          req.flash('error','123')
+          res.redirect("/cart");
+        }
+        else if(name!="" &&mobilenumber!=""&&address!=""){
+          var promiseCheckOut = new Promise((resolve,reject)=>{
+            resolve( user.CheckOut(name,mobilenumber,address))
+          })
+          promiseCheckOut.then(result=>{
+            setTimeout(function () {
+              req.flash('errorMessage', 'Thank you for your purchase!');
+              return  res.redirect("/cart");
+          }, 3000)  
+          })
+        }
       }
     })
   },

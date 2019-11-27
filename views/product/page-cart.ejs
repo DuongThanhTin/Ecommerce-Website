@@ -4,6 +4,12 @@
 	
 	<%- include('../includes/header.ejs') %>
 	<%- include('../includes/cart-r-side.ejs') %>	
+	<% if (errorMessage && error == 'true') { %>
+		<div class="checkout-message user-message--error m-b-20"><%= errorMessage %></div>
+	<% } %>
+	<% if(errorMessage && error == 'false'){ %>
+		<div class="checkout-message checkout-message--success m-b-20"><%= errorMessage %></div>
+	<% } %>
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85" action="/updatecart" method="POST">
 		<div class="container">

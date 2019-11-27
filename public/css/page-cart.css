@@ -9,3 +9,19 @@
 .text-address{
     margin-top: 34px;
 }
+.checkout-message{
+    position: relative;
+    top:91px;
+    margin-left: auto;
+    margin-right: 143px;
+    width: 79%;
+    border: 1px solid red;
+    padding: 0.5rem;
+    border-radius: 3px;
+    text-align: center;
+}
+.checkout-message--success{
+    border-color:green;
+    background: #38d948;
+    color: green;
+}

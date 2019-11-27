@@ -103,10 +103,10 @@ module.exports = {
     var count = 0;
     UserModel.find()
       .then(user => {
-        var data = user.filter(i => i.productNewOrder.order.length>0)
-        for(var i =0 ;i<data.length;i++){
-          var js =  JSON.parse(JSON.stringify(data[i].productNewOrder.order))
-          console.log('data', js[0].sum)
+        var data = user.filter(i => i.productNewOrder.order.length > 0);
+        for (var i = 0; i < data.length; i++) {
+          var js = JSON.parse(JSON.stringify(data[i].productNewOrder.order));
+          console.log("data", js[0].sum);
         }
         res.render("admin/list-order", {
           path: "/admin/list-order",
@@ -274,9 +274,8 @@ module.exports = {
       .catch(function(err) {
         console.log("TCL: ", err);
       });
-  },
+  }
 
- 
   /*
 
 
