@@ -51,7 +51,21 @@ const userSchema = new Schema({
       default: 0
     }
   },
-  productOrder: []
+  productNewOrder:{
+    order:[],
+    fullname:{
+      type: String,
+    },
+    mobilenumber:{
+      type: String,
+    },
+    address:{
+      type: String,
+    },
+    createdOrder:{
+      type: String,
+    },
+  },
 });
 
 //Add to Cart
@@ -100,7 +114,6 @@ userSchema.methods.removeProductCart = function(product, productDetail) {
       break;
     }
   }
-  // console.log("TCL: userSchema.methods.removeProductCart -> listProductCart", listProductCart)
   const updatedCart = {
     items: listProductCart,
     sum: sum
@@ -113,6 +126,8 @@ userSchema.methods.removeProductCart = function(product, productDetail) {
 //Update
 userSchema.methods.updatedCart = function(newUpdateCart){
   var listUpdateProductCart = [...this.cart.items]
+  console.log("TCL: userSchema.methods.updatedCart -> listUpdateProductCart", listUpdateProductCart)
+  console.log("TCL: userSchema.methods.updatedCart -> this.cart.items", this.cart.items)
   var newSum=0;
   ProductModel.find()
   .then(product=>{
@@ -132,12 +147,13 @@ userSchema.methods.updatedCart = function(newUpdateCart){
     })
   })
   .then(result=>{
-    console.log('asdasdsadadsad ',newSum)
     const updatedCart = {
       items: listUpdateProductCart,
       sum: newSum
     };
     this.cart = updatedCart;
+    console.log("JSON.parse(JSON.stringify(this.cart))", JSON.parse(JSON.stringify(this.cart)))
+    console.log(" JSON.stringify(this.cart)", JSON.stringify(this.cart))
     console.log("TCL: cart =>", this.cart);
     return this.save();
   })
@@ -145,11 +161,43 @@ userSchema.methods.updatedCart = function(newUpdateCart){
 }
 
 
+//Order
+userSchema.methods.CheckOut = function(name,mobilenumber,address){
+  var listUpdateProductCart = [...this.cart.items]
+  var orderProduct = this.productNewOrder
+  let itemsCart = JSON.parse(JSON.stringify(this.cart));
+  const today = new Date();
+  var date_format = new Date(today).toDateString("yyyy-MM-dd");
+  const created = date_format;
+  console.log("TCL: userSchema.methods.CheckOut -> this.productNewOrder.order", this.productNewOrder.order)
+  ProductModel.find()
+  .then(product=>{
+    listUpdateProductCart.forEach((item,index)=>{
+      product.forEach(items=>{
+        if (items._id.toString() == listUpdateProductCart[index].productId.toString()) {
+          items.quantity = items.quantity - listUpdateProductCart[index].quantity  
+          //bug User
+       //   return items.save();  
+        }
+      })  
+    })
+  })
+  orderProduct.order.unshift(itemsCart);
+  orderProduct.createdOrder = created
+  orderProduct.fullname = name;
+  orderProduct.mobilenumber = mobilenumber;
+  orderProduct.address = address;
+  console.log("TCL: userSchema.methods.CheckOut -> orderProduct", orderProduct)
+  this.cart = {
+    items: [],
+    sum: 0
+  };
+  return this.save();
+}
+
 const userMongoose = mongoose.model("user", userSchema);
 
 //Module.exports
-
-
 module.exports = userMongoose;
 
 /* update CArt

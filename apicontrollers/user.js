@@ -2,6 +2,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const UserModel = require("../models/user");
 const ProductModel = require("../models/newproduct");
+
 const jwt = require("jsonwebtoken");
 const url = require("url")
 
@@ -304,10 +305,13 @@ module.exports = {
 
   //Update Cart
   postUpdateCart: function(req,res,next){
-    var {productQuantity,productId} = req.body;
+    var {productQuantity,productId,btnUpdateCart,btnCheckOut, name, mobilenumber,address} = req.body;
+    console.log("TCL: btnCheckOut", btnCheckOut)
+    console.log("TCL: btnUpdateCart", btnUpdateCart)
     var newQuantityArr = []
     var productIdArr = []
     var newUpdateItems=[]
+  
     if (typeof productId == 'string') {
       newQuantityArr = productQuantity.split(",");
       productIdArr = productId.split(",");
@@ -328,12 +332,27 @@ module.exports = {
           Quantity: newQuantityArr[i],
         })
       }
-      return user.updatedCart(newUpdateItems)
+      if(btnUpdateCart=="btnUpdateCart"){
+        var promiseUpdateCart = new Promise((resolve,reject)=>{
+          resolve( user.updatedCart(newUpdateItems))
+        })
+        promiseUpdateCart.then(result=>{
+          setTimeout(function () {
+            return res.redirect("/cart");
+        }, 3000)
+        })
+      }
+      else if(btnCheckOut=="btnCheckOut"){
+        var promiseCheckOut = new Promise((resolve,reject)=>{
+          resolve( user.CheckOut(name,mobilenumber,address))
+        })
+        promiseCheckOut.then(result=>{
+          setTimeout(function () {
+            return res.redirect("/cart");
+        }, 3000)
+        })
+      }
     })
-    .then(result => {
-      res.redirect("/cart");
-    })
-     .catch(err => console.log(err));
   },
 
 };

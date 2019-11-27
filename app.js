@@ -23,7 +23,7 @@ const UserModel = require('./models/user')
 
 
 var app = express()
-var port = process.env.port ||4000
+var port = process.env.port ||3000
 
 //Connect DB 
   //Update ez
@@ -40,7 +40,7 @@ const MONGODB_URI =
 
 const store = new MongoDBStore({
   uri: MONGODB_URI,
-  collection: 'sessions'
+  //collection: 'sessions'
 });
 
 mongoose.connect(

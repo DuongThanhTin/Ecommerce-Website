@@ -18,6 +18,9 @@ router.get("/adminTin/managerusers/update/:_id",isAuth,isAuthAdmin, AdminControl
 router.post("/adminTin/managerusers/update",isAuth,isAuthAdmin, AdminController.postUpdateUser);
 router.get("/adminTin/managerusers/delete/:_id",isAuth,isAuthAdmin, AdminController.getRemoveUser);
 
+//Manager Order
+router.get("/adminTin/managerorder",isAuth,isAuthAdmin, AdminController.getListOrder);
+
 //Manager Product
 router.get("/adminTin/managerproducts",isAuth,isAuthAdmin, AdminController.getListiPhone);
 
