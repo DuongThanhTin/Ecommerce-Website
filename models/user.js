@@ -75,6 +75,8 @@ userSchema.methods.addToCart = function(product, newQuantity) {
   });
 
   const updatedCartItems = [...this.cart.items];
+  console.log("TCL: userSchema.methods.addToCart -> updatedCartItems", updatedCartItems)
+  console.log("TCL: userSchema.methods.addToCart -> this.cart.items", this.cart.items)
   var quantityProduct = newQuantity;
   if (cartProductIndex >= 0) {
     newQuantity =

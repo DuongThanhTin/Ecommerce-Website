@@ -267,7 +267,7 @@ module.exports = {
    .then(user=>{
     user.populate("cart.items.productId")
     .execPopulate()
-    .then(user => {
+    .then(user1 => {  
       console.log("TCL: user.cart.sum", user.cart.sum)
         res.json({
             "sumPrice" : user.cart.sum,        

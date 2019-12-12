@@ -159,9 +159,7 @@
 			dataType: 'json',
 		}).done(function(res){
 			const sumPrice = res.sumPrice;
-            console.log("TCL: sumPrice", sumPrice)
-			const products = res.products;
-			console.log(products.length)
+         	const products = res.products;
 			$('#shopCart').attr('data-notify', products.length);
 			$('#sumPrice').html(sumPrice)
 			$('#cart-product-list').html(TemplateCartRSide.createProductList(products));
