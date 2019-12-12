@@ -6,14 +6,14 @@ const NewProductModel = require("../models/newproduct");
 
 module.exports = {
   //Admin
-  getAdmin: function(req, res, next) {
+  getAdmin: function (req, res, next) {
     res.render("admin/adminmanager", {
       path: "/admin"
     });
   },
 
   //Manager Users
-  getManagerUsers: function(req, res, next) {
+  getManagerUsers: function (req, res, next) {
     req.session.isManager = false;
     var count = 0;
     UserModel.find().then(user => {
@@ -30,11 +30,11 @@ module.exports = {
   },
 
   //Update USer
-  getUpdate: function(req, res, next) {
+  getUpdate: function (req, res, next) {
     const userID = req.params._id;
     console.log("TCL: ", userID);
     UserModel.findById(userID)
-      .then(function(user) {
+      .then(function (user) {
         if (!user) {
           return res.redicter("/adminTin");
         }
@@ -43,12 +43,12 @@ module.exports = {
           alo: console.log(user.username)
         });
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log("TCL: ", err);
       });
   },
 
-  postUpdateUser: function(req, res, next) {
+  postUpdateUser: function (req, res, next) {
     const userID = req.body._id;
     const username = req.body.username;
     const age = req.body.age;
@@ -60,7 +60,7 @@ module.exports = {
     console.log("TCL: ", req.body._id);
     console.log("TCL: ", username);
     UserModel.findById(userID)
-      .then(function(user) {
+      .then(function (user) {
         user.username = username;
         user.age = age;
         user.phone = phone;
@@ -70,35 +70,35 @@ module.exports = {
         user.created = created;
         return user.save();
       })
-      .then(function(result) {
+      .then(function (result) {
         console.log("Complete Updated Completed user!");
         return res.render("admin/adminmanager", {
           path: "/adminTin/adminmanager",
           alo: console.log("hihi")
         });
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log("TCL: ", err);
       });
   },
 
   //Remove
-  getRemoveUser: function(req, res, next) {
+  getRemoveUser: function (req, res, next) {
     const userID = req.params._id;
     console.log("ALOALO: " + userID);
     UserModel.deleteOne({
       _id: userID
     })
-      .then(function(result) {
+      .then(function (result) {
         console.log("Complete Delete Completed user!");
         res.redirect("/adminTin/managerusers");
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log("TCL: ", err);
       });
   },
   /*List Order*/
-  getListOrder: function(req, res, next) {
+  getListOrder: function (req, res, next) {
     req.session.isManager = false;
     var count = 0;
     UserModel.find()
@@ -120,7 +120,7 @@ module.exports = {
   },
 
   /* New DB*/
-  getListNewProduct: function(req, res, next) {
+  getListNewProduct: function (req, res, next) {
     req.session.isManager = false;
     var count = 0;
     NewProductModel.find()
@@ -135,7 +135,7 @@ module.exports = {
   },
 
   //List iPhone
-  getListiPhone: function(req, res, next) {
+  getListiPhone: function (req, res, next) {
     req.session.isManager = false;
     var count = 0;
     NewProductModel.find()
@@ -155,7 +155,7 @@ module.exports = {
 
   //-------------------------------------------------------------------
   //List Macbook
-  getListMacbook: function(req, res, next) {
+  getListMacbook: function (req, res, next) {
     req.session.isManager = false;
     var count = 0;
     NewProductModel.find()
@@ -175,7 +175,7 @@ module.exports = {
 
   //-------------------------------------------------------------------
   //List Apple Watch
-  getListAppleWatch: function(req, res, next) {
+  getListAppleWatch: function (req, res, next) {
     req.session.isManager = false;
     var count = 0;
     NewProductModel.find()
@@ -195,7 +195,7 @@ module.exports = {
 
   //-------------------------------------------------------------------
   //List Airpod
-  getListAirpod: function(req, res, next) {
+  getListAirpod: function (req, res, next) {
     req.session.isManager = false;
     var count = 0;
     NewProductModel.find()
@@ -213,26 +213,26 @@ module.exports = {
       });
   },
 
-  getRemoveNewProduct: function(req, res, next) {
+  getRemoveNewProduct: function (req, res, next) {
     const newproductID = req.params._id;
     console.log("Product ID: " + newproductID);
     req.session.isManager = false;
     NewProductModel.deleteOne({
       _id: newproductID
     })
-      .then(function(result) {
+      .then(function (result) {
         console.log("Complete Delete Product!");
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log("TCL: ", err);
       });
   },
 
-  getUpdateNewProduct: function(req, res, next) {
+  getUpdateNewProduct: function (req, res, next) {
     const newproductID = req.params._id;
     console.log("TCL: ", newproductID);
     NewProductModel.findById(newproductID)
-      .then(function(newproduct) {
+      .then(function (newproduct) {
         if (!newproduct) {
           return res.redicter("/adminTin");
         }
@@ -241,12 +241,12 @@ module.exports = {
           alo: console.log(newproduct.productname)
         });
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log("TCL: ", err);
       });
   },
 
-  postUpdateNewProduct: function(req, res, next) {
+  postUpdateNewProduct: function (req, res, next) {
     const newproductID = req.body._id;
     const newproductname = req.body.productname;
     const imagePath = req.body.imagePath;
@@ -257,7 +257,7 @@ module.exports = {
     const created = req.body.created;
     console.log("TCL: ", newproductID);
     NewProductModel.findById(newproductID)
-      .then(function(newproduct) {
+      .then(function (newproduct) {
         newproduct.productname = newproductname;
         newproduct.imagePath = imagePath;
         newproduct.description = description;
@@ -267,11 +267,11 @@ module.exports = {
         newproduct.created = created;
         return newproduct.save();
       })
-      .then(function(result) {
+      .then(function (result) {
         console.log("Complete Updated Completed Product!");
         res.redirect("/adminTin/managerairpod");
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log("TCL: ", err);
       });
   }

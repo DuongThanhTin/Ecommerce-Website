@@ -2,177 +2,53 @@
 <%- include('../includes/head.ejs') %>
 
 <body class="animsition">
-    <!-- Title page -->
-    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background: cornflowerblue">
-        <h2 class="ltext-105 cl0 txt-center" style='color:brown'>
-            Account
-            </h1>
-            <h2 class="ltext-105 cl0 txt-center " style='color:brown'>
-                <%= user.username %>
-            </h2>
-    </section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 uxa-form-group mt-5">
 
+                <h1 class="text-center mt-5 mb-2">YOUR ACCOUNT</h1>
+                <!-- single sentence description -->
+                <p class="lead text-center"><%= user.username %></p>
+                <!-- /single sentence description -->
 
-    <!-- Start Welcome area -->
-    <div class="all-content-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
+                <div class="uxa-user-avatar">
+                    <img class="avatar"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw_YH9cRRgw-4HkfvHENsN_k92lWOZCZbVAAYAooPZi92KROIOWQ&s"
+                        alt="User avatar">
                 </div>
-            </div>
-        </div>
-        <div class="single-product-tab-area mg-tb-15">
-            <!-- Single pro tab review Start-->
-            <div class="single-pro-review-area">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="review-tab-pro-inner">
 
-                                <div id="myTabContent" class="tab-content custom-product-edit">
-                                    <div class="product-tab-list tab-pane fade active in" id="description">
 
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <div class="review-content-section">
-                                                    <form method="POST" action="/adminTin/managerusers/update">
-                                                        <div class="updateuser-content">
-                                                            <span class="mtext-110 cl2 ">
-                                                                Username
-                                                            </span>
-                                                            <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon updateuser-content"><i style="display: flex;" class=" fa fa-user updateuser-image"
-                                                                        aria-hidden="true"></i></span>
-                                                                <input type="text" name="username" id="username"
-                                                                    class="form-control" placeholder="username"
-                                                                    value="<%= user.username %>" readonly> 
-                                                            </div>
-                                                        </div>
-                                                       <div>
-                                                            <span class="mtext-110 cl2 ">
-                                                                Age
-                                                            </span>
-                                                            <div class="input-group mg-b-pro-edt">
+                <form class="mt-5 mb-5">
 
-                                                                <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
-                                                                        aria-hidden="true"></i></span>
-                                                                <input type="text" name="age" id="age" class="form-control"
-                                                                    placeholder="age" value="<%= user.age %>">
-                                                            </div>
-                                                       </div>
-                                                       <div>
-                                                            <span class="mtext-110 cl2 ">
-                                                                Phone
-                                                            </span>
-                                                            <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
-                                                                        aria-hidden="true"></i></span>
-                                                                <input type="text" name="phone" id="phone"
-                                                                    class="form-control" placeholder="Phone"
-                                                                    value="<%= user.phone %>">
-                                                            </div>
-                                                       </div>
-                                                       <div>
-                                                            <span class="mtext-110 cl2 ">
-                                                                Email
-                                                            </span>
-                                                            <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
-                                                                        aria-hidden="true"></i></span>
-                                                                <input type="text" name="email" id="email"
-                                                                    class="form-control" placeholder="Email"
-                                                                    value="<%= user.email %>">
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <span class="mtext-110 cl2 ">
-                                                                Address
-                                                            </span>
-                                                            <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
-                                                                        aria-hidden="true"></i></span>
-                                                                <input type="text" name="address" id="address"
-                                                                    class="form-control" placeholder="Address"
-                                                                    value="<%= user.address %>">
-                                                            </div>
-                                                        </div>
-                                                       
-                                               
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <div class="review-content-section">
-                                                    <span class="mtext-110 cl2 ">
-                                                        Role
-                                                    </span>
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
-                                                                aria-hidden="true"></i></span>
-                                                        <input type="text" name="role" id="role" class="form-control"
-                                                            placeholder="Role" value="<%= user.role %>" readonly>
-                                                    </div>
-                                                    <span class="mtext-110 cl2 ">
-                                                        Created
-                                                    </span>
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
-                                                                aria-hidden="true"></i></span>
-                                                        <input type="text" name="created" id="created"
-                                                            class="form-control" placeholder="created"
-                                                            value="<%= user.created %>" readonly>
-
-                                                    </div>
-                                                    <input type="hidden" value="<%= user._id %>" name="_id" id="_id">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="product-edt-pix-wrap">
-
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="product-edt-remove"
-                                                                    style="display: inline-block;">
-
-                                                                    <button type="submit"
-                                                                        class="btn btn-danger waves-effect waves-light">Save
-                                                                        <i class="fa fa-upload" aria-hidden="true"></i>
-                                                                    </button>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="product-edt-remove"
-                                                                    style="display: inline-block;">
-                                                                    <form method="POST"
-                                                                        action="/adminTin/remove-user/<%= user._id %>">
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger waves-effect waves-light">Remove
-                                                                            <i class="fa fa-times "
-                                                                                aria-hidden="true"></i>
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Your Email Address<span>*</span></label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share or spam your email
+                            address.</small>
                     </div>
 
-                </div>
+                    <div class="form-group">
+                        <label for="exampleInputName">User Name</label>
+                        <input type="text" class="form-control" id="exampleInputUserName" aria-describedby="username"
+                            value=" <%= user.username %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">Last Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter your First Name">
+                    </div>
+
+                </form>
+
+                <button class="btn btn-success" (click)="save()"><i class="fa fa-save mr-2"></i> Update Account
+                    Details</button>
+
             </div>
         </div>
     </div>
+
 
     <%- include('../includes/footer.ejs') %>
 
