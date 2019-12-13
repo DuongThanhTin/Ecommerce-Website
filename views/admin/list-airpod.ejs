@@ -21,7 +21,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
                         <div class="tilteList">
-                        <h4>Airpod List</h4>
+                            <h4>Airpod List</h4>
                         </div>
                         <div class="add-product">
                             <!-- <a href="/admin/edit-user">Add user</a> -->
@@ -56,9 +56,10 @@
                                             <td name="productname" id="productname"> <%= airpod.productname %></td>
                                             <td><%= airpod.description %></td>
                                             <td><%= airpod.price %></td>
-                                            <td ><%= airpod.imagePath %></td>
+                                            <td><%= airpod.imagePath %></td>
                                             <td><%= airpod.created%></td>
-                                            <td style="width: 30px"> <a href="../adminTin/managerairpod/update/<%= airpod._id %>"
+                                            <td style="width: 30px"> <a
+                                                    href="../adminTin/managerairpod/update/<%= airpod._id %>"
                                                     data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <span class="glyphicon glyphicon-edit"></span>
                                                 </a>
@@ -81,27 +82,27 @@
                         </div>
                         <div class="Sum">
                             Tổng số sản phẩm Airpods là: <%= i %>
-                        <div>
+                            <div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-</div>
-                <!-- Map -->
-                <div class="map">
-                    <div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787"
-                        data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
-                </div>
+            <!-- Map -->
+            <div class="map">
+                <div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787"
+                    data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+            </div>
 
-                <%- include('../includes/footer.ejs') %>
+            <%- include('../includes/footer.ejs') %>
 
-                <!-- Back to top -->
-                <div class="btn-back-to-top" id="myBtn">
-                    <span class="symbol-btn-back-to-top">
-                        <i class="zmdi zmdi-chevron-up"></i>
-                    </span>
-                </div>
-                <%- include('../includes/end.ejs') %>
+            <!-- Back to top -->
+            <div class="btn-back-to-top" id="myBtn">
+                <span class="symbol-btn-back-to-top">
+                    <i class="zmdi zmdi-chevron-up"></i>
+                </span>
+            </div>
+            <%- include('../includes/end.ejs') %>
 </body>
 
 </html>

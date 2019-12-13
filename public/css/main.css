@@ -3424,6 +3424,7 @@ table.list td:hover {
 .uxa-form-group {
   background-color: white;
   padding: 2rem;
+  border-radius: 10px;
   box-shadow: 0 0.2rem 0.6rem rgba(50, 50, 50, 0.15);
 }
 
@@ -3453,3 +3454,15 @@ table.list td:hover {
 .avatar {
     width: 150px;
   }
+
+.button-update {
+   display: flex;
+   
+   margin-left: 35%;
+}
+
+.product-edt-remove {
+  margin-left: 10px;
+}
+
+

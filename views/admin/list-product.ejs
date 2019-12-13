@@ -5,11 +5,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Manager Users</title>
+    <title>Manager Iphone</title>
 </head>
 <div class="p-b-10">
     <h3 class="ltext-103 cl5">
-        <div class="translate">Manager Users</div>
+        <div class="translate">Manager Iphone</div>
     </h3>
 </div>
 
@@ -19,41 +19,61 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
-                        <h4>Product List</h4>
+                        <div class="tilteList">
+                            <h4>Product List</h4>
+                        </div>
                         <div class="add-product">
                             <!-- <a href="/admin/edit-user">Add user</a> -->
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td> Product Name</td>
-                                    <td> Description</td>
-                                    <td>Price ($)</td>
-                                    <td>Image Path</td>
-                                    <td>Created</td>
-                                    <td>Function Update</td>
-                                    <td>Function Delete</td>
-                                </tr>
+                        <div class="table-wrapper">
+                            <table class="list">
+                                <colgroup>
+                                    <col class="col-01">
+                                    <col class="col-02">
+                                    <col class="col-03">
+                                    <col class="col-04">
+                                    <col class="col-05">
+                                    <col class="col-06">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th> Product Name</th>
+                                        <th> Description</th>
+                                        <th>Price ($)</th>
+                                        <th>Image Path</th>
+                                        <th>Created</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
                                 <% var i =0 %>
                                 <form method="POST" action="/adminTin/managerusers/delete">
 
                                     <% listiphone.forEach(function (product) { %>
-                                    <tr>
-                                        <input type="hidden" value="<%= product._id %>" name="_id" id="_id">
-                                        <td name="productname" id="productname"> <%= product.productname %></td>
-                                        <td> <%= product.description %></td>
-                                        <td><%= product.price %></td>
-                                        <td><%= product.imagePath %></td>
-                                        <td><%= product.created%></td>
-                                        <td> <a href="../adminTin/managerproducts/update/<%= product._id %>"
-                                                class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 translate">
-                                                Update
-                                            </a></td>
-                                        <td> <a href="../adminTin/managerproducts/delete/<%= product._id %>"
-                                                class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 translate">
-                                                Delete
-                                            </a></td>
-                                    </tr>
+                                    <tbody>
+                                        <tr>
+                                            <input type="hidden" value="<%= product._id %>" name="_id" id="_id">
+                                            <td name="productname" id="productname"> <%= product.productname %></td>
+                                            <td> <%= product.description  %>
+                                            </td>
+                                            <td><%= product.price%></td>
+                                            <td><%= product.imagePath  %></td>
+                                            <td><%= product.created%></td>
+
+                                            <div class="editTable">
+                                                <td>
+                                                    <a href="../adminTin/managerproducts/update/<%= product._id %>"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <span class="glyphicon glyphicon-edit"></span>
+                                                    </a>
+
+                                                    <a href="../adminTin/managerproducts/delete/<%= product._id %>"
+                                                        data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </a>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                    </tbody>
                                     <% product.count =i%>
                                     <% product.count = product.count+1 %>
 
@@ -63,31 +83,32 @@
 
                                 </form>
                             </table>
-
-                            <h2 class="ltext-105 cl0 txt-center " style='color:brown'>
-                                Tổng số sản phẩm iPhone là: <%= i %>
-                            </h2>
                         </div>
+                        <div class="Sum">
+                            Tổng số sản phẩm iphone là: <%= i %>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Map -->
-        <div class="map">
-            <div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787"
-                data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
-        </div>
+    <!-- Map -->
+    <div class="map">
+        <div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787"
+            data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+    </div>
 
-        <%- include('../includes/footer.ejs') %>
+    <%- include('../includes/footer.ejs') %>
 
-        <!-- Back to top -->
-        <div class="btn-back-to-top" id="myBtn">
-            <span class="symbol-btn-back-to-top">
-                <i class="zmdi zmdi-chevron-up"></i>
-            </span>
-        </div>
-        <%- include('../includes/end.ejs') %>
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+    <%- include('../includes/end.ejs') %>
 </body>
 
 </html>
