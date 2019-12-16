@@ -13,10 +13,14 @@ router.use(cors())
 
 
 //New Product
-router.get('/adminTin/addproduct',isAuthAdmin, ProductController.getAddProduct)
-router.post('/adminTin/addproduct',isAuthAdmin, ProductController.postAddProduct)
+router.get('/adminTin/addproduct', isAuthAdmin, ProductController.getAddProduct)
+router.post('/adminTin/addproduct', isAuthAdmin, ProductController.postAddProduct)
 
-router.get('/allproducts',ProductController.getAllProducts)
-router.get('/product/:_id',isAuth,ProductController.getProductDetail)
+router.get('/allproducts', ProductController.getAllProducts)
+router.get('/product/:_id', isAuth, ProductController.getProductDetail)
+router.get('/product/:_id', isAuth, ProductController.getProductDetail)
+
+//detail product
+router.get('/detailProduct/:_id', isAuth, ProductController.getProductDetailView)
 
 module.exports = router;

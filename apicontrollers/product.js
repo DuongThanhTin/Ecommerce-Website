@@ -7,7 +7,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 module.exports = {
   /* NEW DB*/
-  getAddProduct: function(req, res, next) {
+  getAddProduct: function (req, res, next) {
     let message = req.flash("error");
     if (message.length > 0) {
       message = message[0];
@@ -20,7 +20,7 @@ module.exports = {
     });
   },
 
-  postAddProduct: function(req, res, next) {
+  postAddProduct: function (req, res, next) {
     const {
       productname,
       price,
@@ -37,7 +37,7 @@ module.exports = {
       imagePath: imagePath
     })
 
-      .then(function(product) {
+      .then(function (product) {
         if (product) {
           return res.render("product/addproduct", {
             errorMessageProduct: console.log("PRoduct is Exists"),
@@ -70,55 +70,72 @@ module.exports = {
             .save({
               alo: console.log("Save new Product  Done")
             })
-            .then(function(product) {
+            .then(function (product) {
               console.log(product);
             });
         }
       })
-      .then(function(result) {
+      .then(function (result) {
         res.redirect("/adminTin");
       })
-      .catch(function(err) {
+      .catch(function (err) {
         res.send("error: " + err);
       });
   },
 
-  getProductDetail: function(req, res, next) {
+  getProductDetail: function (req, res, next) {
     const productId = req.params.productId;
     console.log("TCL: productId", productId)
     UserModel.find()
-    .then(users => {
+      .then(users => {
         ProductModel.find()
-            .then(products => {
-              ProductModel.findById(productId)
-                    .then((product) => {                       
-                        res.redirect("/")
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
-            });
-    })
-    .catch(err => {
-        console.log(err);
-    });
-  },
-
-  getAllProducts: function(req, res, next) {
-    req.session.isManager = false;
-    var count = 0;
-    ProductModel.find()
-      .then(products => {
-        res.render("product/page-AllProducts", {
-          listproducts: products
-      });
+          .then(products => {
+            ProductModel.findById(productId)
+              .then((product) => {
+                res.redirect("/")
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          });
       })
       .catch(err => {
         console.log(err);
       });
   },
 
- 
+  getProductDetailView: function (req, res, next) {
+    const productId = req.params.productId;
+    console.log("TCL: productId", productId)
+    UserModel.find()
+      .then(users => {
+        ProductModel.find()
+          .then(products => {
+            ProductModel.findById(productId)
+              .then((product) => {
+                res.render("product/page-detailProducts")
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
 
-  
+  getAllProducts: function (req, res, next) {
+    req.session.isManager = false;
+    var count = 0;
+    ProductModel.find()
+      .then(products => {
+        res.render("product/page-AllProducts", {
+          listproducts: products
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
 };

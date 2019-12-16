@@ -236,7 +236,7 @@ module.exports = {
         if (!newproduct) {
           return res.redicter("/adminTin");
         }
-        res.render("admin/update-airpods", {
+        res.render("admin/update-product", {
           newproduct: newproduct,
           alo: console.log(newproduct.productname)
         });
