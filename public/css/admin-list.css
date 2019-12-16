@@ -1,0 +1,144 @@
+
+/* List */
+
+table.list {
+    border: 2px solid #acc8dd;
+    border-collapse: collapse;
+    margin-left: 10%;
+    border-radius: 5px;
+    width: 80%;
+    table-layout: fixed;
+  }
+  
+  table.list td {
+    transform-style: preserve-3d;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-collapse: collapse;
+    word-wrap: break-word;
+  }
+  
+  table.list th {
+    transform-style: preserve-3d;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transition: all 0.6s ease-in-out;
+    background-color: #167f92;
+    padding: 10px;
+    color: #fff !important;
+    text-align: center;
+    position: sticky;
+    top: -1px;
+    z-index: 2;
+  }
+  
+  table.list tr:hover {
+    background: #f4f4f4;
+  }
+  
+  table.list td:hover {
+    color: rgb(136, 189, 238);
+  }
+  
+  .translate {
+    color: #555;
+    text-align: center;
+  }
+  
+  .table-wrapper {
+    height: 500px;
+    overflow-y: scroll;
+  }
+  
+  .tilteList {
+    margin-left: 10%;
+  }
+  
+  .Sum {
+    color: brown;
+    margin-top: 10px;
+    margin-left: 10%;
+    font-size: 17px;
+  }
+  
+  .glyphicon.glyphicon-edit {
+    color: rgb(28, 165, 96);
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  
+  .glyphicon.glyphicon-trash {
+    color: rgb(170, 23, 18);
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  
+  .col-04 {
+    width: 300px;
+  }
+  
+  .col-06 {
+    width: 100px;
+  }
+  
+  
+  .uxa-form-group {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0.2rem 0.6rem rgba(50, 50, 50, 0.15);
+  }
+  
+  .form-group span {
+    color: red;
+  }
+  
+  
+  .animsition{
+    background: #F3F3F3;
+  }
+  
+  .uxa-user-avatar {
+    width: 140px;
+    height: 140px;
+    margin: auto;
+    overflow: hidden;
+    
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+     
+    border-radius: 100%;
+   
+  }
+   
+  .avatar {
+      width: 150px;
+    }
+  
+  .button-update {
+     display: flex;
+     
+     margin-left: 35%;
+  }
+  
+  .product-edt-remove {
+    margin-left: 10px;
+  }
+  
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-trash:before 
+{ content: "\e020"; 
+ }
+.glyphicon-edit:before { content: "\e065"; } 

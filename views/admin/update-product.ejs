@@ -1,13 +1,13 @@
-<%- include('../includes/admin-head.ejs') %>
+<%- include('../includes/profile-head.ejs') %>
 <%- include('../includes/head.ejs') %>
 <body class="animsition">
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(images/iphone-xr1.jpg);">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(images/avatar.jpg);">
 		<h2 class="ltext-105 cl0 txt-center" style ='color:brown'>
-			Product 
+			Products Name 
         </h1>
         <h2 class="ltext-105 cl0 txt-center " style ='color:brown'>
-               <%= product.productname %>
+               <%= airpods.productname %>
         </h2>
 	</section>	
 
@@ -35,29 +35,31 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="review-content-section">
-                                                                <form method="POST" action="/adminTin/managerproducts/update">
+                                                                <form method="POST" action="/adminTin/managerairpod/update">
                                                             <span class="mtext-110 cl2 ">
-                                                                Product Name
+                                                                AirPods Name
                                                             </span>
                                                             <div class="input-group mg-b-pro-edt">
-                                                                    
-                                                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="productname" id="productname" class="form-control" placeholder="Product name" value="<%= product.productname %>">
+                                                                <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
+                                                                    aria-hidden="true"></i></span>
+                                                                <input type="text" name="productname" id="productname" class="form-control" placeholder="AirPods name" value="<%= airpods.productname %>">
                                                             </div>
                                                             <span class="mtext-110 cl2 ">
                                                                 Image Path
                                                             </span>
                                                             <div class="input-group mg-b-pro-edt">
                                                                     
-                                                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="imagePath" id="imagePath" class="form-control" placeholder="Image Path" value="<%= product.imagePath %>">
+                                                                <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
+                                                                    aria-hidden="true"></i></span>
+                                                                <input type="text" name="imagePath" id="imagePath" class="form-control" placeholder="Image Path" value="<%= airpods.imagePath %>">
                                                             </div>
                                                             <span class="mtext-110 cl2 ">
                                                                 Description
                                                             </span>
                                                             <div class="input-group mg-b-pro-edt">
-                                                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="description" id="description" class="form-control" placeholder="Description" value="<%= product.description %>">
+                                                                <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
+                                                                    aria-hidden="true"></i></span>
+                                                                <input type="text" name="description" id="description" class="form-control" placeholder="Description" value="<%= airpods.description %>">
                                                             </div>
                                                             
                                                         </div>
@@ -68,18 +70,20 @@
                                                                      Price ($)
                                                                     </span>
                                                             <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="price" id="price" class="form-control" placeholder="Price" value="<%= product.price %>">
+                                                                <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
+                                                                    aria-hidden="true"></i></span>
+                                                                <input type="text" name="price" id="price" class="form-control" placeholder="Price" value="<%= airpods.price %>">
                                                             </div>
                                                             <span class="mtext-110 cl2 ">
                                                                 Created
                                                                 </span>      
                                                             <div class="input-group mg-b-pro-edt" >
-                                                                    <span class="input-group-addon" ><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="created" id="created" class="form-control" placeholder="created" value="<%= product.created %>">
+                                                                <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
+                                                                    aria-hidden="true"></i></span>
+                                                                <input type="text" name="created" id="created" class="form-control" placeholder="created" value="<%= airpods.created %>">
                                                           
                                                             </div>
-                                                            <input type="hidden" value="<%= product._id %>" name="_id" id="_id">
+                                                            <input type="hidden" value="<%= airpods._id %>" name="_id" id="_id">
                                                         </div>
                                                   
                                                     </div>

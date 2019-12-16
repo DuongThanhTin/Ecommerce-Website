@@ -125,8 +125,10 @@ module.exports = {
     var count = 0;
     NewProductModel.find()
       .then(products => {
-        res.json({
-          listiphone: products
+        res.render("admin/list-allproducts", {
+          path: "/admin/list-allproducts",
+          count: count,
+          listproducts: products
         });
       })
       .catch(err => {
@@ -142,8 +144,8 @@ module.exports = {
       .then(products => {
         var data = products.filter(i => i.category == "iPhone");
         console.log(data);
-        res.render("admin/list-product", {
-          path: "/admin/list-product",
+        res.render("admin/list-iphone", {
+          path: "/admin/list-iphone",
           count: count,
           listiphone: data
         });
@@ -236,8 +238,8 @@ module.exports = {
         if (!newproduct) {
           return res.redicter("/adminTin");
         }
-        res.render("admin/update-airpods", {
-          newproduct: newproduct,
+        res.render("admin/update-product", {
+          airpods: newproduct,
           alo: console.log(newproduct.productname)
         });
       })

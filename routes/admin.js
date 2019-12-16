@@ -21,8 +21,11 @@ router.get("/adminTin/managerusers/delete/:_id",isAuth,isAuthAdmin, AdminControl
 //Manager Order
 router.get("/adminTin/managerorder",isAuth,isAuthAdmin, AdminController.getListOrder);
 
-//Manager Product
-router.get("/adminTin/managerproducts",isAuth,isAuthAdmin, AdminController.getListiPhone);
+//Manager iPhone
+router.get("/adminTin/managerproducts",isAuth,isAuthAdmin, AdminController.getListNewProduct);
+
+//Manager iPhone
+router.get("/adminTin/manageriphone",isAuth,isAuthAdmin, AdminController.getListiPhone);
 
 //Manager Macbook
 router.get("/adminTin/managermacbook",isAuth,isAuthAdmin, AdminController.getListMacbook);
@@ -37,15 +40,15 @@ router.get("/adminTin/managerairpod",isAuthAdmin, AdminController.getListAirpod)
 //Manager NewProduct
 router.get("/adminTin/managernewproduct",isAuthAdmin, AdminController.getListNewProduct);
 router.get(
-  "/adminTin/managernewproduct/delete/:_id",isAuthAdmin,
+  "/adminTin/managerproducts/delete/:_id",isAuthAdmin,
   AdminController.getRemoveNewProduct
 );
 router.get(
-  "/adminTin/managernewproduct/update/:_id",isAuthAdmin,
+  "/adminTin/managerproducts/update/:_id",isAuthAdmin,
   AdminController.getUpdateNewProduct
 );
 router.post(
-  "/adminTin/managernewproduct/update",isAuthAdmin,
+  "/adminTin/managerproducts/update",isAuthAdmin,
   AdminController.postUpdateNewProduct
 );
 

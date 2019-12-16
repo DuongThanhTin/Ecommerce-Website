@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<%- include("../includes/head.ejs")%>
+<%- include('../admin/header-admin.ejs') %>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/admin-list.css">
+
+</head>
+<div class="p-b-10 p-t-50">
+    <h3 class="ltext-103 cl5">
+        <div class="translate">Manager All Products</div>
+    </h3>
+</div>
+
+<body>
+    <div class="bodyList">
+        <div class="product-status mg-tb-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-status-wrap">
+                            <div class="add-product">
+                                <!-- <a href="/admin/edit-user">Add user</a> -->
+                            </div>
+                            <div class="table-wrapper">
+                                <table class="list">
+                                    <colgroup>
+                                        <col class="col-01">
+                                        <col class="col-02">
+                                        <col class="col-03">
+                                        <col class="col-04">
+                                        <col class="col-05">
+                                        <col class="col-06">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th> Product Name</th>
+                                            <th> Description</th>
+                                            <th>Price ($)</th>
+                                            <th>Image Path</th>
+                                            <th>Created</th>
+                                            <th>Edit </th>
+                                          
+                                        </tr>
+                                    </thead>
+                                    <% var i =0 %>
+                                    <form method="POST" action="/adminTin/managerusers/delete">
+                                        <% listproducts.forEach(function (product) { %>
+                                        <tbody>
+                                            <tr>
+                                                <input type="hidden" value="<%= product._id %>" name="_id" id="_id">
+                                                <input type="hidden" value="<%= product._id %>" name="_id" id="_id">
+                                                <td name="productname" id ="productname"> 
+                                                    <div class="flex-c-m">
+                                                      <%= product.productname %>
+                                                    </div>
+                                                </td>
+                                                <td> 
+                                                    <div class="flex-c-m">
+                                                      <%= product.description %>
+                                                    </div>
+                                                </td>
+                                                <td> 
+                                                    <div class="flex-c-m">
+                                                      <%= product.price %>
+                                                    </div>
+                                                </td>
+                                   
+                                                <td>
+                                                    <div class="flex-c-m">
+                                                    <img style="width: 50px; height: 50px;" src="<%= product.imagePath %>" alt="#"/>
+                                                    </div>
+                                                </td>
+                                                <td> 
+                                                    <div class="flex-c-m">
+                                                      <%= product.created %>
+                                                    </div>
+                                                </td>
+        
+                                                
+                                                    <td >
+                                                        <div style="display:flex; justify-content:space-evenly;">
+                                                        <a href="../adminTin/managerproducts/update/<%= product._id %>"
+                                                            data-toggle="tooltip" data-placement="top" title="Edit">
+                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        </a>
+
+                                                        <a href="../adminTin/managerproducts/delete/<%= product._id %>"
+                                                            data-toggle="tooltip" data-placement="top" title="Delete">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                      </div>
+                                                    </td>
+                                            
+                                            </tr>
+                                        </tbody>
+                                        <% product.count =i %>
+                                        <% product.count = product.count+1 %>
+                                        <% i = product.count %>
+                                        <% }) %>
+                                    </form>
+                                </table>
+                            </div>
+                            <div class="Sum">
+                                Tổng số iPhone là: <%= i %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to top -->
+        <div class="btn-back-to-top" id="myBtn">
+            <span class="symbol-btn-back-to-top">
+                <i class="zmdi zmdi-chevron-up"></i>
+            </span>
+        </div>
+    </div>
+
+</body>
+
+</html>

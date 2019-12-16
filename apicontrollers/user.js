@@ -97,6 +97,8 @@ module.exports = {
 
   //Login User
   getLogin: function(req, res, next) {
+    console.log("TCL: process.env.SECRETKEY_TOKEN", process.env.SECRETKEY_TOKEN)
+         
     let message = req.flash("error");
     if (message.length > 0) {
       message = message[0];
@@ -142,7 +144,7 @@ module.exports = {
                 role: user.role
               },
               process.env.SECRETKEY_TOKEN
-            );
+             );
             req.session.token = token;
             req.session.role = user.role;
             return req.session.save(err => {

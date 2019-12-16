@@ -10,33 +10,33 @@
 
 				<div class="right-top-bar flex-w h-full">
 					<% if (!isAuthenticated) { %>
-						<a href="/login" class="flex-c-m trans-04 p-lr-25 transEN" >
+						<a href="/login" class="flex-c-m trans-04 p-lr-25 " >
 							Login
 						</a>
-						<a href="/signup" class="flex-c-m trans-04 p-lr-25 transEN">
+						<a href="/signup" class="flex-c-m trans-04 p-lr-25 ">
 							Sign Up
 						</a>
 
 
 					<% } else { %>
 						<% if(currentUser.role == "admin"){ %>
-							<a href="/adminTin" class="flex-c-m trans-04 p-lr-25 translate"><%= currentUser.username %></a>
+							<a href="/adminTin" class="flex-c-m trans-04 p-lr-25 ">Admin</a>
 							
 						<% } %>
 						<form action="/logout" method="POST">
-							<button type="submit" class="flex-c-m trans-04 p-lr-25 translate form-in-a active-top">
+							<button type="submit" class="flex-c-m trans-04 p-lr-25  form-in-a active-top">
 								Logout
 							</button>
 						</form>
 
-					<a href="/account/<%= currentUser._id %>" class="flex-c-m trans-04 p-lr-25 translate">
+					<a href="/account/<%= currentUser._id %>" class="flex-c-m trans-04 p-lr-25 ">
 						<% if(currentUser){ %>
 							<%= currentUser.username %>
 						<% } %>
 					</a>
 					<% } %>
 
-					<a href="#" class="flex-c-m trans-04 p-lr-25 transEN">
+					<a href="#" class="flex-c-m trans-04 p-lr-25 ">
 						<div style="color: aquamarine">Hello, Welcome to My Website</div>
 					</a>
 				</div>
@@ -59,25 +59,25 @@
 						</li>
 
 						<li >
-							<a href="/products" class="translate">Shop</a>
+							<a href="/products" class="">Shop</a>
 						</li>
 						
 						<% if (isAuthenticated) { %>
 						<li >
-							<a href="/cart" class="translate">Cart</a>
+							<a href="/cart" class="">Cart</a>
 						</li>
 						<% } %>
 
 						<li>
-							<a href="/blog" class="translate">Blog</a>
+							<a href="/blog" class="">Blog</a>
 						</li>
 
 						<li >
-							<a href="/about" class="translate">About</a>
+							<a href="/about" class="">About</a>
 						</li>
 
 						<li >
-							<a href="/contact" class="translate">Contact</a>
+							<a href="/contact" class="">Contact</a>
 						</li>
 					</ul>
 				</div>	

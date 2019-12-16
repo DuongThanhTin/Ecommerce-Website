@@ -75,8 +75,8 @@ userSchema.methods.addToCart = function(product, newQuantity) {
   });
 
   const updatedCartItems = [...this.cart.items];
-  console.log("TCL: userSchema.methods.addToCart -> updatedCartItems", updatedCartItems)
-  console.log("TCL: userSchema.methods.addToCart -> this.cart.items", this.cart.items)
+ // console.log("TCL: userSchema.methods.addToCart -> updatedCartItems", updatedCartItems)
+ // console.log("TCL: userSchema.methods.addToCart -> this.cart.items", this.cart.items)
   var quantityProduct = newQuantity;
   if (cartProductIndex >= 0) {
     newQuantity =
@@ -128,8 +128,6 @@ userSchema.methods.removeProductCart = function(product, productDetail) {
 //Update
 userSchema.methods.updatedCart = function(newUpdateCart){
   var listUpdateProductCart = [...this.cart.items]
-  console.log("TCL: userSchema.methods.updatedCart -> listUpdateProductCart", listUpdateProductCart)
-  console.log("TCL: userSchema.methods.updatedCart -> this.cart.items", this.cart.items)
   var newSum=0;
   ProductModel.find()
   .then(product=>{
@@ -139,9 +137,8 @@ userSchema.methods.updatedCart = function(newUpdateCart){
           for(var i =0; i<newUpdateCart.length; i++){
             if(newUpdateCart[i].ID.toString() == listUpdateProductCart[index].productId.toString()){
               listUpdateProductCart[index].quantity = newUpdateCart[i].Quantity;
-              console.log("TCL: userSchema.methods.updatedCart -> listUpdateProductCart[index].quantity", listUpdateProductCart[index].quantity)
+            
               newSum = newSum + parseFloat(items.price) * parseFloat( newUpdateCart[i].Quantity);
-              console.log('newSum', newSum)
             }
           }
         }
