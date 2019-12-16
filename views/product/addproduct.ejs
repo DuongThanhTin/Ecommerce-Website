@@ -7,19 +7,18 @@
     <% } %>
 
     <!-- Title page -->
-    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(../images/iphone-xr1.jpg);">
-        <h2 class="ltext-105 cl0 txt-center" style='color: aquamarine'>
-            Add Product
-            </h1>
-    </section>
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(../images/product.png); ">
+       
+    
 
 
     <!-- Content page -->
-    <section class="bg0 p-t-104 p-b-116">
         <div class="container">
             <div class="flex-w flex-tr justify-content-center">
-                <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                    <form method="POST" action="/adminTin/addproduct">
+                <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md" style="background: white; border-radius: 10px; box-shadow: 0 0.2rem 1rem rgba(50, 50, 50, 0.15);">
+                  
+                    <h2>ADD PRODUCT</h2>
+                    <form method="POST" action="/adminTin/addproduct"style="text-align: left;">
                         <!--Product name-->
                         <span class="mtext-110 cl2 ">
                             Product name
@@ -79,13 +78,8 @@
                             <div class="dropDownSelect2"></div>
                         </div>
                      
-                        <div class=" bor8 m-b-20 how-pos4-parent">                 
-                            <input type="text" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full" name="category"
-                            id="category" required readonly>
-                        </div>
-
                         <button type="submit"
-                            class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                            class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" style="margin-top:30px">
                             Add Product
                         </button>
 

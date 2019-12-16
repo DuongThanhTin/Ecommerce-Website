@@ -1,0 +1,161 @@
+<%- include('../includes/head.ejs') %>
+
+    <div class="container">
+        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+            <div class="row">
+                <div class="col-md-6 col-lg-7 p-b-30">
+                    <div class="p-l-25 p-r-30 p-lr-0-lg">
+                        <div class="left-col">
+                            <div class="thumbs">
+                                <a class="thumb-image active">
+                                    <span><img src=""
+                                            alt="images1"></span>
+                                </a>
+                                <a class="thumb-image active">
+                                    <span><img src=""
+                                            alt="images2"></span>
+                                </a>
+                                <a class="thumb-image active">
+                                    <span><img src=""
+                                            alt="images3"></span>
+                                </a>
+                                <a class="thumb-image active">
+                                    <span><img src=""
+                                            alt="images4"></span>
+                                </a>
+                            </div>
+                        <div class="col-md-8">
+                            <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+                        </div>
+
+                    </div>
+                </div>
+    
+                <div class="col-md-6 col-lg-5 p-b-30">
+                    <div class="p-r-50 p-t-5 p-lr-0-lg modal-general">
+                        <h2 class="mtext-105 cl2 js-name-detail p-b-14 modal-productname" id="data_productname">
+                        </h2>
+                        <!--Content-->
+                        <div class="p-t-33">
+                            <div class="flex-w flex-r-m p-b-10 modal-detail">
+                                <div class="size-203 modal-detail-textsize">
+                                    Price ($):
+                                </div>
+                                <div class="size-204 respon6-next">
+                                    <div id="data_price" class="data-text modal-detail-textsize"></div>
+                                </div>
+                            </div>
+                            <div class="flex-w flex-r-m p-b-10 modal-detail">
+                                <div class="size-203 modal-detail-textsize">
+                                    Category:
+                                </div>
+                                <div class="size-204 respon6-next">
+                                    <div id="data_category" class="data-text modal-detail-textsize"></div>
+                                </div>
+                            </div>
+                            <div class="flex-w flex-r-m p-b-10 modal-detail">
+                                <div class="size-203 modal-detail-textsize ">
+                                    Description:
+                                </div>
+                                <div class="size-204 respon6-next">
+                                    <div id="data_description" class="data-text modal-detail-textsize"></div>
+                                </div>
+                            </div>
+                            <div class="flex-w flex-r-m p-b-10 modal-detail">
+                                <div class="size-203 modal-detail-textsize">
+                                    Quantity:
+                                </div>
+                                <div class="size-204 flex-w flex-m respon6-next">
+                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-minus"></i>
+                                        </div>
+    
+                                        <input class="mtext-104 cl3 txt-center num-product" type="number"
+                                            name="productNumber" id="productQuantity" value="1">
+    
+                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-plus"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="flex-w p-b-10 modal-detail modal-review">
+                                <div class="size-203 ">
+                                    <img src="/images/star.svg" alt="#" />
+                                    <img src="/images/star.svg" alt="#" />
+                                    <img src="/images/star.svg" alt="#" />
+                                    <img src="/images/star.svg" alt="#" />
+                                    <img src="/images/star.svg" alt="#" />
+                                </div>
+                                <div class="size-203  modal-text-review modal-detail-textsize">
+                                    | 10 Reviews
+                                </div>
+                            </div>
+                            <div class="flex-w p-b-10 modal-cart-button">
+                                <input type="hidden" id="productId" name="productId" value="">
+                                <% if (isAuthenticated) { %>
+                                <button onclick="postCartModal()"
+                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15  modal-addtocart-button">
+                                    Add to cart
+                                </button>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="my-4">Related Products</h3>
+                
+                <div class="row">
+                
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <a href="#">
+                            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                        </a>
+                    </div>
+                
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <a href="#">
+                            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                        </a>
+                    </div>
+                
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <a href="#">
+                            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                        </a>
+                    </div>
+                
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <a href="#">
+                            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                        </a>
+                    </div>
+                
+                </div>
+                <!-- /.row -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Map -->
+<div class="map">
+    <div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png"
+        data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+</div>
+
+<%- include('../includes/footer.ejs') %>
+
+<!-- Back to top -->
+<div class="btn-back-to-top" id="myBtn">
+    <span class="symbol-btn-back-to-top">
+        <i class="zmdi zmdi-chevron-up"></i>
+    </span>
+</div>
+
+
+<%- include('../includes/end.ejs') %>

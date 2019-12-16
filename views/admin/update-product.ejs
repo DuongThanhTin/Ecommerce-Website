@@ -2,12 +2,12 @@
 <%- include('../includes/head.ejs') %>
 <body class="animsition">
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(images/iphone-xr1.jpg);">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(../images/airpods_slider_1.png);">
 		<h2 class="ltext-105 cl0 txt-center" style ='color:brown'>
-			Product 
+			Products 
         </h1>
         <h2 class="ltext-105 cl0 txt-center " style ='color:brown'>
-               <%= product.productname %>
+               <%= newproduct.productname %>
         </h2>
 	</section>	
 
@@ -35,14 +35,14 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="review-content-section">
-                                                                <form method="POST" action="/adminTin/managerproducts/update">
+                                                                <form method="POST" action="/adminTin/managernewproduct/update">
                                                             <span class="mtext-110 cl2 ">
-                                                                Product Name
+                                                                Products Name
                                                             </span>
                                                             <div class="input-group mg-b-pro-edt">
                                                                     
                                                                 <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="productname" id="productname" class="form-control" placeholder="Product name" value="<%= product.productname %>">
+                                                                <input type="text" name="productname" id="productname" class="form-control" placeholder="Product name" value="<%= newproduct.productname %>">
                                                             </div>
                                                             <span class="mtext-110 cl2 ">
                                                                 Image Path
@@ -50,14 +50,14 @@
                                                             <div class="input-group mg-b-pro-edt">
                                                                     
                                                                     <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="imagePath" id="imagePath" class="form-control" placeholder="Image Path" value="<%= product.imagePath %>">
+                                                                <input type="text" name="imagePath" id="imagePath" class="form-control" placeholder="Image Path" value="<%= newproduct.imagePath %>">
                                                             </div>
                                                             <span class="mtext-110 cl2 ">
                                                                 Description
                                                             </span>
                                                             <div class="input-group mg-b-pro-edt">
                                                                     <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="description" id="description" class="form-control" placeholder="Description" value="<%= product.description %>">
+                                                                <input type="text" name="description" id="description" class="form-control" placeholder="Description" value="<%= newproduct.description %>">
                                                             </div>
                                                             
                                                         </div>
@@ -69,17 +69,17 @@
                                                                     </span>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="price" id="price" class="form-control" placeholder="Price" value="<%= product.price %>">
+                                                                <input type="text" name="price" id="price" class="form-control" placeholder="Price" value="<%= newproduct.price %>">
                                                             </div>
                                                             <span class="mtext-110 cl2 ">
                                                                 Created
                                                                 </span>      
                                                             <div class="input-group mg-b-pro-edt" >
                                                                     <span class="input-group-addon" ><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                                <input type="text" name="created" id="created" class="form-control" placeholder="created" value="<%= product.created %>">
+                                                                <input type="text" name="created" id="created" class="form-control" placeholder="created" value="<%= newproduct.created %>">
                                                           
                                                             </div>
-                                                            <input type="hidden" value="<%= product._id %>" name="_id" id="_id">
+                                                            <input type="hidden" value="<%= newproduct._id %>" name="_id" id="_id">
                                                         </div>
                                                   
                                                     </div>

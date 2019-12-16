@@ -23,20 +23,20 @@ const UserModel = require('./models/user')
 
 
 var app = express()
-var port = process.env.port ||3000
+var port = process.env.port || 8000
 
 //Connect DB 
-  //Update ez
-  /*
+//Update ez
+/*
 mongoose.connect(
-  'mongodb+srv://admin:admin@web-nodejs-zrtjg.mongodb.net/test?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-  }
+'mongodb+srv://admin:admin@web-nodejs-zrtjg.mongodb.net/test?retryWrites=true&w=majority',
+{
+  useNewUrlParser: true,
+}
 )*/
 
 const MONGODB_URI =
-'mongodb+srv://admin:admin@web-nodejs-zrtjg.mongodb.net/test?retryWrites=true&w=majority';
+  'mongodb+srv://admin:admin@web-nodejs-zrtjg.mongodb.net/test?retryWrites=true&w=majority';
 
 const store = new MongoDBStore({
   uri: MONGODB_URI,
@@ -45,7 +45,7 @@ const store = new MongoDBStore({
 
 mongoose.connect(
   MONGODB_URI,
-  { useNewUrlParser: true}
+  { useNewUrlParser: true }
 )
 
 //App use
@@ -59,12 +59,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //- Dùng session để duy trì đăng nhập và để sử dụng flash
 app.use(
   session({
-  secret: 'tingodlike',
-  resave: false, // session sẽ ko lưu với mỗi lệnh request => tốc đô
-  saveUninitialized: false, // chắn chăn ko có session đc save mỗi request
-  store: store
+    secret: 'tingodlike',
+    resave: false, // session sẽ ko lưu với mỗi lệnh request => tốc đô
+    saveUninitialized: false, // chắn chăn ko có session đc save mỗi request
+    store: store
   }))
-  
+
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 //- Dùng để đưa thông tin message 
@@ -72,7 +72,7 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use((req, res, next) => {  
+app.use((req, res, next) => {
   // gui ve 1 bien trong moi 1 route
   res.locals.isAuthenticated = req.session.isLoggedIn;
   res.locals.Manager = req.session.isManager;
@@ -90,13 +90,13 @@ app.use(routesProduct);
 
 // view engine setup
 app.set('view engine', 'ejs');
-app.set('views','views');
+app.set('views', 'views');
 
 
 //-404 Error
-app.use(function(req,res,next){
+app.use(function (req, res, next) {
   const err = new Error('123 123 Not found!');
-  err.status =404;
+  err.status = 404;
   next(err)
 });
 
@@ -106,7 +106,7 @@ app.use(function(req,res,next){
 
 
 
-app.listen(port,function(){
+app.listen(port, function () {
   console.log('Server already')
 })
 module.exports = app;
