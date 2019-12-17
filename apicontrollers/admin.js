@@ -7,8 +7,23 @@ const NewProductModel = require("../models/newproduct");
 module.exports = {
   //Admin
   getAdmin: function(req, res, next) {
-    res.render("admin/adminmanager", {
-      path: "/admin"
+    var count = 0; 
+    UserModel.find().then(user => {
+      var data = user.filter(i => i.productNewOrder.order.length > 0);
+      for (var i = 0; i < data.length; i++) {
+        var js = JSON.parse(JSON.stringify(data[i].productNewOrder.order));
+        console.log("data", js[0].sum);
+      }
+      res
+        .render("admin/adminmanager", {
+          path: "/admin",
+          count: count,
+          listusers: user,
+          listorders: data,
+        })
+        .catch(err => {
+          console.log(err);
+        });
     });
   },
 
@@ -17,6 +32,7 @@ module.exports = {
     req.session.isManager = false;
     var count = 0;
     UserModel.find().then(user => {
+      var data = user.filter(i => i.productNewOrder.order.length > 0);
       res
         .render("admin/list-user", {
           path: "/admin/list-user",
@@ -72,10 +88,7 @@ module.exports = {
       })
       .then(function(result) {
         console.log("Complete Updated Completed user!");
-        return res.render("admin/adminmanager", {
-          path: "/adminTin/adminmanager",
-          alo: console.log("hihi")
-        });
+        res.redirect("/adminTin")
       })
       .catch(function(err) {
         console.log("TCL: ", err);
@@ -202,8 +215,8 @@ module.exports = {
     var count = 0;
     NewProductModel.find()
       .then(products => {
-        var data = products.filter(i => i.category == "AipPods");
-        console.log(data);
+        var data = products.filter(i => i.category == "AirPods");
+        console.log('alo ',data);
         res.render("admin/list-airpod", {
           path: "/admin/list-airpod",
           count: count,
@@ -224,6 +237,7 @@ module.exports = {
     })
       .then(function(result) {
         console.log("Complete Delete Product!");
+        res.redirect('/adminTin/managerproducts')
       })
       .catch(function(err) {
         console.log("TCL: ", err);

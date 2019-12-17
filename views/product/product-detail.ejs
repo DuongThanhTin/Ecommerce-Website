@@ -2,14 +2,164 @@
 <body class="animsition">
 
     <%- include("../includes/header.ejs")%>
-	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(images/macbook_slider_1.png);">
-		<h2 class="ltext-105 cl0 txt-center" style ='color: aquamarine'>
-			Macbook
-		</h1>
-	</section>	
 
-    <%- include("../includes/interface-listmacbook.ejs") %>
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <img src="<%=product.imagePath%>" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+			<h2 class="mtext-105 cl2 js-name-detail p-b-14 modal-productname" id="data_productname" value="	<%= product.productname %>">
+				<%= product.productname %>
+			</h2>
+			<!--Content-->
+			<div class="p-t-33">
+				<div class="flex-w flex-r-m p-b-10 modal-detail">
+					<div class="size-203 modal-detail-textsize">
+						Price ($):
+					</div>
+					<div class="size-204 respon6-next">
+						<div id="data_price" class="data-text modal-detail-textsize">	<%= product.price %></div>
+					</div>
+				</div>
+				<div class="flex-w flex-r-m p-b-10 modal-detail">
+					<div class="size-203 modal-detail-textsize">
+						Category:
+					</div>
+					<div class="size-204 respon6-next">
+						<div id="data_category" class="data-text modal-detail-textsize">	<%= product.category %></div>
+					</div>
+				</div>
+				<div class="flex-w flex-r-m p-b-10 modal-detail">
+					<div class="size-203 modal-detail-textsize ">
+						Description:
+					</div>
+					<div class="size-204 respon6-next">
+						<div id="data_description" class="data-text modal-detail-textsize">	<%= product.description %></div>
+					</div>
+				</div>
+				<div class="flex-w flex-r-m p-b-10 modal-detail">
+					<div class="size-203 modal-detail-textsize">
+						Quantity:
+					</div>
+					<div class="size-204 flex-w flex-m respon6-next">
+						<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+							<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+								<i class="fs-16 zmdi zmdi-minus"></i>
+							</div>
+
+							<input class="mtext-104 cl3 txt-center num-product" type="number"
+								name="productNumber" id="productQuantity" value="1">
+
+							<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+								<i class="fs-16 zmdi zmdi-plus"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex-w p-b-10 modal-detail modal-review">
+					<div class="size-203 ">
+						<img src="/images/star.svg" alt="#" />
+						<img src="/images/star.svg" alt="#" />
+						<img src="/images/star.svg" alt="#" />
+						<img src="/images/star.svg" alt="#" />
+						<img src="/images/star.svg" alt="#" />
+					</div>
+					<div class="size-203  modal-text-review modal-detail-textsize">
+						| 10 Reviews
+					</div>
+				</div>
+
+				<div class="flex-w p-b-10 modal-cart-button">
+					<input type="hidden" id="productId" name="productId" value="<%=product._id%>">
+					<% if (isAuthenticated) { %>
+					<button onclick="postCartModal()"
+						class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15  modal-addtocart-button">
+						Add to cart
+					</button>
+					<% } %>
+				</div>
+			</div>
+		</p>
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Additional information</h4>
+
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
+            voluptates,
+            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4">
+
+          <img src="https://halomobile.vn/wp-content/uploads/2019/05/halomobile-iphone-11-den-min.png" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <img src="http://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp13touch-silver-select-201807?wid=892&hei=820&&qlt=80&.v=1529520056377" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <img src="https://www.mytrendyphone.eu/images/Apple-AirPods-2-with-Wireless-Charging-Case-MRXJ2ZM-A-White-21032019-01-p.jpg" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+
+  
+
 	<%- include('../includes/footer.ejs') %>			
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -21,3 +171,45 @@
 	<%- include('../includes/cart-r-side.ejs') %>
 	<%- include('../includes/modal.ejs') %>
 <%- include('../includes/end.ejs') %>
+
+<script>
+	function postCartModal() {
+		var quantity = $("#productQuantity").val();
+		var productId = $("#productId").val();
+		var productName = $('#data_productname').text();
+
+		$.ajax({
+			url: "/cart",
+			type: "POST",
+			data: {
+				productId: productId,
+				productNumber: quantity
+			},
+			success: function (res) {
+				swal(productName, " is added to cart !", "success");
+				refreshCartOrder();
+			},
+			error: function (err) {
+				console.log(err)
+				swal("Failed", "success");
+			}
+		});
+
+	}
+
+
+	function refreshCartOrder() {
+		$.ajax({
+			url: '/api/cart',
+			type: 'GET',
+			dataType: 'json',
+		}).done(function (res) {
+			const sumPrice = res.sumPrice;
+			const products = res.products;
+			console.log(products.length)
+			$('#shopCart').attr('data-notify', products.length);
+			$('#sumPrice').html(sumPrice)
+			$('#cart-product-list').html(TemplateCartRSide.createProductList(products));
+		});
+	}
+</script>

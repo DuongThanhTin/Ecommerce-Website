@@ -16,7 +16,7 @@ module.exports = function(app) {
         var dataiPhone = products.filter(i => i.category == "iPhone");
         var dataMacbook = products.filter(i => i.category == "Macbook");
         var dataAppleWatch = products.filter(i => i.category == "AppleWatch");
-        var dataAirpods = products.filter(i => i.category == "Airpods");
+        var dataAirpods = products.filter(i => i.category == "AirPods");
         res.render("homepage", {
           listproducts: dataiPhone,
           listmacbooks: dataMacbook,
@@ -69,7 +69,7 @@ module.exports = function(app) {
       .then(products => {
         var data = products.filter(i => i.category == "Macbook");
         res.render("product//page-macbook", {
-              userr: req.user,
+           
               listmacbooks: data
           });
       })
@@ -85,7 +85,7 @@ module.exports = function(app) {
       .then(products => {
         var data = products.filter(i => i.category == "AppleWatch");
         res.render("product//page-applewatch", {
-              userr: req.user,
+          
               listapplewatch: data
           });
       })
@@ -99,9 +99,8 @@ module.exports = function(app) {
     req.session.isManager = false;
     ProductModel.find()
       .then(products => {
-        var data = products.filter(i => i.category == "Airpods");
+        var data = products.filter(i => i.category == "AirPods");
         res.render("product//page-airpod", {
-              userr: req.user,
               listairpod: data
           });
       })

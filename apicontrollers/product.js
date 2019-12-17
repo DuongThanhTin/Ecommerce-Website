@@ -84,21 +84,21 @@ module.exports = {
   },
 
   getProductDetail: function(req, res, next) {
-    const productId = req.params.productId;
+    const productId = req.params._id;
     console.log("TCL: productId", productId)
     UserModel.find()
     .then(users => {
-        ProductModel.find()
-            .then(products => {
               ProductModel.findById(productId)
-                    .then((product) => {                       
-                        res.redirect("/")
+                    .then((productdetail) => {   
+             
+                      res.render("product/product-detail", {
+                        product: productdetail
+                      });
                     })
                     .catch(err => {
                         console.log(err);
                     });
-            });
-    })
+            })
     .catch(err => {
         console.log(err);
     });
@@ -111,7 +111,7 @@ module.exports = {
       .then(products => {
         res.render("product/page-AllProducts", {
           listproducts: products
-      });
+        });
       })
       .catch(err => {
         console.log(err);

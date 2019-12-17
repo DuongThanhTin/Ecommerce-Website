@@ -1,15 +1,21 @@
 <%- include('../includes/profile-head.ejs') %>
 <%- include('../includes/head.ejs') %>
+<%- include('../admin/header-admin.ejs') %>
 <body class="animsition">
+    <style type="text/css">
+    section{
+        background-image:  url(/images/avatar.jpg);
+    }
+    </style>
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url(images/avatar.jpg);">
-		<h2 class="ltext-105 cl0 txt-center" style ='color:brown'>
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image:  url(/images/avatar.jpg) ">
+		<h2 class="ltext-105 cl0 txt-center" style ='color:white'>
 			Products Name 
         </h1>
-        <h2 class="ltext-105 cl0 txt-center " style ='color:brown'>
+        <h3 class="ltext-105 cl0 txt-center " style ='color:white'>
                <%= airpods.productname %>
-        </h2>
-	</section>	
+        </h3>
+	</section>	 
 
 	
         <!-- Start Welcome area -->
@@ -33,11 +39,12 @@
                                             <div class="product-tab-list tab-pane fade active in" id="description">
                                             
                                                 <div class="row">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="
+                                                    background: antiquewhite">
                                                         <div class="review-content-section">
-                                                                <form method="POST" action="/adminTin/managerairpod/update">
+                                                                <form method="POST" action="/adminTin/managerproducts/update">
                                                             <span class="mtext-110 cl2 ">
-                                                                AirPods Name
+                                                                Product Name
                                                             </span>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i style="display: flex;" class="fa fa-user updateuser-image"
@@ -64,7 +71,8 @@
                                                             
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="
+                                                    background: antiquewhite">
                                                         <div class="review-content-section">
                                                                 <span class="mtext-110 cl2 ">
                                                                      Price ($)
@@ -84,6 +92,7 @@
                                                           
                                                             </div>
                                                             <input type="hidden" value="<%= airpods._id %>" name="_id" id="_id">
+                                                            <input type="hidden" value="<%= airpods.category %>" name="category" id="category">
                                                         </div>
                                                   
                                                     </div>
@@ -132,10 +141,6 @@
 
 
 
-	<!-- Map -->
-	<div class="map">
-		<div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
-	</div>
 
 	<%- include('../includes/footer.ejs') %>			
 
