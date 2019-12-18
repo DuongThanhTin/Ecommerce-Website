@@ -48,13 +48,28 @@
                                         <tbody>
                                             <tr>
                                                 <input type="hidden" value="<%= user._id %>" name="_id" id="_id">
-                                                <td name="username" id="username"> <%= user.username %></td>
+                                                <td name="username" id="username">  <div class="flex-c-m">
+                                                    <%= user.username %>
+                                                </div></td>
                                                 <td style="width: 15%; white-space:nowrap; overflow:auto">
-                                                    <%= user.age %>
+                                                 
+                                                    <div class="flex-c-m">
+                                                        <%= user.age %>
+                                                    </div>
                                                 </td>
-                                                <td><%= user.phone %></td>
-                                                <td><%= user.role %></td>
-                                                <td><%= user.created%></td>
+                                                <td>
+                                                    <div class="flex-c-m">
+                                                        <%= user.phone %>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="flex-c-m">
+                                                        <%= user.role %>
+                                                    </div>
+                                                </td>
+                                                <td> <div class="flex-c-m">
+                                                    <%= user.created %>
+                                                </div></td>
 
                                                 <div class="editTable">
                                                     <td style="display:flex; justify-content:space-evenly;">

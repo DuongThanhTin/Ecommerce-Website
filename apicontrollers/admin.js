@@ -110,6 +110,7 @@ module.exports = {
         console.log("TCL: ", err);
       });
   },
+  
   /*List Order*/
   getListOrder: function(req, res, next) {
     req.session.isManager = false;
@@ -117,10 +118,9 @@ module.exports = {
     UserModel.find()
       .then(user => {
         var data = user.filter(i => i.productNewOrder.order.length > 0);
-        for (var i = 0; i < data.length; i++) {
-          var js = JSON.parse(JSON.stringify(data[i].productNewOrder.order));
-          console.log("data", js[0].sum);
-        }
+        //Filter Order Year
+        // var data2 = data.filter(i=>i.productNewOrder.createdOrder.indexOf('2018')>0)
+        //console.log("TCL: data2", data2)
         res.render("admin/list-order", {
           path: "/admin/list-order",
           count: count,
