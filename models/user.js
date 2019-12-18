@@ -175,7 +175,6 @@ userSchema.methods.CheckOut = function(name,mobilenumber,address){
       product.forEach(items=>{
         if (items._id.toString() == listUpdateProductCart[index].productId.toString()) {
           items.quantity = items.quantity - listUpdateProductCart[index].quantity  
-          //bug User
        //   return items.save();  
         }
       })  

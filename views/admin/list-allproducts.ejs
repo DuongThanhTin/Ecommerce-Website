@@ -27,10 +27,11 @@
                             <div class="table-wrapper">
                                 <table class="list">
                                     <colgroup>
-                                        <col class="col-01">
-                                        <col class="col-02">
-                                        <col class="col-03">
+                                        <col class="col-05">
                                         <col class="col-04">
+                                        <col class="col-03">
+                                        <col class="col-05">
+                                        <col class="col-05">
                                         <col class="col-05">
                                         <col class="col-06">
                                     </colgroup>
@@ -40,6 +41,7 @@
                                             <th> Description</th>
                                             <th>Price ($)</th>
                                             <th>Image Path</th>
+                                            <th>Quantity</th>
                                             <th>Created</th>
                                             <th>Edit </th>
                                           
@@ -53,28 +55,33 @@
                                                 <input type="hidden" value="<%= product._id %>" name="_id" id="_id">
                                                 <input type="hidden" value="<%= product._id %>" name="_id" id="_id">
                                                 <td name="productname" id ="productname"> 
-                                                    <div class="flex-c-m">
+                                                    <div class="flex-c-m" style="text-align: center;">
                                                       <%= product.productname %>
                                                     </div>
                                                 </td>
                                                 <td> 
-                                                    <div class="flex-c-m">
+                                                    <div class="flex-c-m" style="text-align: center;">
                                                       <%= product.description %>
                                                     </div>
                                                 </td>
                                                 <td> 
-                                                    <div class="flex-c-m">
+                                                    <div class="flex-c-m" style="text-align: center;">
                                                       <%= product.price %>
                                                     </div>
                                                 </td>
                                    
                                                 <td>
-                                                    <div class="flex-c-m">
+                                                    <div class="flex-c-m" style="text-align: center;">
                                                     <img style="width: 50px; height: 50px;" src="<%= product.imagePath %>" alt="#"/>
                                                     </div>
                                                 </td>
                                                 <td> 
-                                                    <div class="flex-c-m">
+                                                    <div class="flex-c-m" style="text-align: center;">
+                                                      <%= product.quantity %>
+                                                    </div>
+                                                </td>
+                                                <td> 
+                                                    <div class="flex-c-m" style="text-align: center;">
                                                       <%= product.created %>
                                                     </div>
                                                 </td>

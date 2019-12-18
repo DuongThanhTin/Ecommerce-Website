@@ -244,6 +244,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="serial">#</th>
+                                                
                                                     <th class="avatar">Name</th>
                                                     <th>Mobile</th>
                                                     <th>Address</th>
@@ -253,12 +254,15 @@
                                                 </tr>
                                             </thead>   
                                             <% var k=0 %>
+                                  
                                             <% listorders.forEach(function (orderProduct) { %>
                                                 <% var js=JSON.parse(JSON.stringify(orderProduct.productNewOrder.order)) %>
                                                 <% k=k+1 %>
+                                             
                                             <tbody>
                                                 <tr>
                                                     <td class="serial"><%=k %></td>
+                                                   
                                                     <td class="name">
                                                         <%= orderProduct.productNewOrder.fullname %>
                                                     </td>
@@ -273,6 +277,7 @@
                                               
                                             </tbody>
                                             <% }) %>
+                                   
                                         </table>
                                     </div> <!-- /.table-stats -->
                                 </div>
