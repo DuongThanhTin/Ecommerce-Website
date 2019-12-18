@@ -110,7 +110,7 @@ module.exports = {
         console.log("TCL: ", err);
       });
   },
-  
+
   /*List Order*/
   getListOrder: function(req, res, next) {
     req.session.isManager = false;
@@ -285,7 +285,7 @@ module.exports = {
       })
       .then(function(result) {
         console.log("Complete Updated Completed Product!");
-        res.redirect("/adminTin/managerairpod");
+        res.redirect("/adminTin/managerproducts");
       })
       .catch(function(err) {
         console.log("TCL: ", err);
