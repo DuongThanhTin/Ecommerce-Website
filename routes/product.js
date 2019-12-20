@@ -16,7 +16,6 @@ router.use(cors())
 router.get('/adminTin/addproduct',isAuthAdmin, ProductController.getAddProduct)
 router.post('/adminTin/addproduct',isAuthAdmin, ProductController.postAddProduct)
 
-router.get('/allproducts',ProductController.getAllProducts)
 router.get('/product/:_id',ProductController.getProductDetail)
 
 module.exports = router;

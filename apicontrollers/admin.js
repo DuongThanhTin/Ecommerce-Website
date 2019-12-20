@@ -138,9 +138,10 @@ module.exports = {
     var count = 0;
     NewProductModel.find()
       .then(products => {
-        res.render("admin/list-allproducts", {
-          path: "/admin/list-allproducts",
+        res.render("admin/list-product", {
+          path: "/admin/list-product",
           count: count,
+          kind: 'allproducts',
           listproducts: products
         });
       })
@@ -157,10 +158,11 @@ module.exports = {
       .then(products => {
         var data = products.filter(i => i.category == "iPhone");
         console.log(data);
-        res.render("admin/list-iphone", {
-          path: "/admin/list-iphone",
+        res.render("admin/list-product", {
+          path: "/admin/list-product",
           count: count,
-          listiphone: data
+          kind: 'iphone',
+          listproducts: data
         });
       })
       .catch(err => {
@@ -177,10 +179,11 @@ module.exports = {
       .then(products => {
         var data = products.filter(i => i.category == "Macbook");
         console.log(data);
-        res.render("admin/list-macbook", {
-          path: "/admin/list-macbook",
+        res.render("admin/list-product", {
+          path: "/admin/list-product",
           count: count,
-          listmacbooks: data
+          kind: 'macbook',
+          listproducts: data
         });
       })
       .catch(err => {
@@ -197,10 +200,11 @@ module.exports = {
       .then(products => {
         var data = products.filter(i => i.category == "AppleWatch");
         console.log(data);
-        res.render("admin/list-applewatch", {
-          path: "/admin/list-applewatch",
+        res.render("admin/list-product", {
+          path: "/admin/list-product",
           count: count,
-          listapplewatch: data
+          kind: 'applewatch',
+          listproducts: data
         });
       })
       .catch(err => {
@@ -217,10 +221,11 @@ module.exports = {
       .then(products => {
         var data = products.filter(i => i.category == "AirPods");
         console.log('alo ',data);
-        res.render("admin/list-airpod", {
-          path: "/admin/list-airpod",
+        res.render("admin/list-product", {
+          path: "/admin/list-product",
           count: count,
-          listairpods: data
+          kind: 'airpods',
+          listproducts: data
         });
       })
       .catch(err => {

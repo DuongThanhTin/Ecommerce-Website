@@ -2,20 +2,18 @@
     <div class="container">
         <div class="p-b-10">
             <h3 class="ltext-103 cl5">
-                <div class="">Product Overview</div>
+                <div class="translate">Product Overview</div>
             </h3>
         </div>
 
         <div class="flex-w flex-sb-m p-b-52">		
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                 
-      
-                    <a href="/allproducts" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5   ">
-                        All Products
-                    </a>
-             
+                <a href="/allproducts" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5   ">
+                    All Products
+                </a>
                 
-                <a href="/iphone" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5   ">
+                <a href="/iphone" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ">
                     iPhone
                 </a>
 
@@ -39,11 +37,42 @@
                     <div class="translate">Search</div>
                 </div>
             </div>
-            <div class="block1-txt-child1 flex-col-l">
-                    <span class="block1-name ltext-102 trans-04 p-b-8 ">
+            <%if(kind == "allproducts") {%>
+                <div class="block1-txt-child1 flex-col-l">
+                    <span class="block1-name ltext-102 trans-04 p-b-8 translate">
+                        All Products
+                    </span>
+                 </div>
+            <%}%>
+            <%  if(kind =="iphone"){ %>
+                <div class="block1-txt-child1 flex-col-l">
+                    <span class="block1-name ltext-102 trans-04 p-b-8 translate">
+                        iPhone
+                    </span>
+                </div>
+            <%}%>
+            <%  if(kind =="applewatch"){ %>
+                <div class="block1-txt-child1 flex-col-l">
+                    <span class="block1-name ltext-102 trans-04 p-b-8 translate">
+                        Apple Watch
+                    </span>
+                </div>
+            <%}%>
+            <%  if(kind =="airpods"){ %>
+                <div class="block1-txt-child1 flex-col-l">
+                    <span class="block1-name ltext-102 trans-04 p-b-8 translate">
                         AirPods
                     </span>
-            </div>
+                </div>
+            <%}%>
+            <%  if(kind =="macbook"){ %>
+                <div class="block1-txt-child1 flex-col-l">
+                    <span class="block1-name ltext-102 trans-04 p-b-8 translate">
+                        Macbook
+                    </span>
+                </div>
+            <%}%>
+          
             <!-- Search product -->
             <div class="dis-none panel-search w-full p-t-10 p-b-15">
                 <!-- <div class="bor8 dis-flex p-l-15">
@@ -65,7 +94,7 @@
     
    
         <div class="row isotope-grid">
-                <% listairpod.forEach(function (product) { %>
+                <% listproducts.forEach(function (product) { %>
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">	
                             <div class="block2">
                                 <div class="block2-pic hov-img0">
@@ -115,5 +144,5 @@
             </a>
         </div> -->
     </div>
-    
+
 </section>

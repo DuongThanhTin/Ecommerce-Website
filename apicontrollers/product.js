@@ -103,22 +103,4 @@ module.exports = {
         console.log(err);
     });
   },
-
-  getAllProducts: function(req, res, next) {
-    req.session.isManager = false;
-    var count = 0;
-    ProductModel.find()
-      .then(products => {
-        res.render("product/page-AllProducts", {
-          listproducts: products
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  },
-
- 
-
-  
 };

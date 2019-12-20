@@ -91,6 +91,7 @@ userSchema.methods.addToCart = function(product, newQuantity) {
   }
   var priceAddQuantityProduct = product.price * quantityProduct;
   this.cart.sum = this.cart.sum + priceAddQuantityProduct; //product.price * newQuantity;
+
   console.log(
     "TCL: userSchema.methods.addToCart -> updatedCartItems",
     updatedCartItems

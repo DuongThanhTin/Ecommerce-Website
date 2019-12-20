@@ -31,18 +31,15 @@ module.exports = function(app) {
 
   app.get("/contact", function(req, res, next) {
     res.render("general/contact", {
-      userr: req.user
     });
   }),
     app.get("/about", function(req, res, next) {
       res.render("general/about", {
-        userr: req.user
       });
     });
 
   app.get("/blog", function(req, res, next) {
     res.render("general/blog", {
-      userr: req.user
     });
   });
 
@@ -52,9 +49,9 @@ module.exports = function(app) {
       ProductModel.find()
         .then(products => {
           var data = products.filter(i => i.category == "iPhone");
-          res.render("product//page-iPhone", {
-                userr: req.user,
-                listproducts: data
+          res.render("product/page-product", {
+              kind: 'iphone',
+              listproducts: data
             });
         })
         .catch(err => {
@@ -68,10 +65,10 @@ module.exports = function(app) {
     ProductModel.find()
       .then(products => {
         var data = products.filter(i => i.category == "Macbook");
-        res.render("product//page-macbook", {
-           
-              listmacbooks: data
-          });
+        res.render("product/page-product", {
+          kind: 'macbook',
+          listproducts: data
+        });
       })
       .catch(err => {
         console.log(err);
@@ -84,28 +81,65 @@ module.exports = function(app) {
     ProductModel.find()
       .then(products => {
         var data = products.filter(i => i.category == "AppleWatch");
-        res.render("product//page-applewatch", {
-          
-              listapplewatch: data
-          });
+        res.render("product/page-product", {
+          kind: 'applewatch',
+          listproducts: data
+        });
       })
       .catch(err => {
         console.log(err);
       });
   });
 
-  //airpod
+  //airpods
   app.get("/airpod", function(req, res, next) {
     req.session.isManager = false;
     ProductModel.find()
       .then(products => {
         var data = products.filter(i => i.category == "AirPods");
-        res.render("product//page-airpod", {
-              listairpod: data
-          });
+        res.render("product/page-product", {
+          kind: 'airpods',
+          listproducts: data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+   //airpods
+   app.get("/airpod", function(req, res, next) {
+    req.session.isManager = false;
+    ProductModel.find()
+      .then(products => {
+        var data = products.filter(i => i.category == "AirPods");
+        res.render("product/page-product", {
+          kind: 'airpods',
+          listproducts: data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+
+  //allproduct
+  app.get("/allproducts", function(req, res, next) {
+    req.session.isManager = false;
+    var count = 0;
+    ProductModel.find()
+      .then(products => {
+        res.render("product/page-product", {
+          kind: 'allproducts',
+          listproducts: products
+        });
       })
       .catch(err => {
         console.log(err);
       });
   });
 };
+
+
+

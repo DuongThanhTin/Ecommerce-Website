@@ -6,13 +6,43 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/admin-list.css">
-
 </head>
-<div class="p-b-10 p-t-50">
-    <h3 class="ltext-103 cl5">
-        <div class="translate">Manager iPhone</div>
-    </h3>
-</div>
+
+    <%if(kind == "allproducts") {%>
+        <div class="p-b-10 p-t-50">
+            <h3 class="ltext-103 cl5">
+                <div class="translate">Manager All Products</div>
+            </h3>
+        </div>
+    <%}%>
+    <%  if(kind =="iphone"){ %>
+        <div class="p-b-10 p-t-50">
+            <h3 class="ltext-103 cl5">
+                <div class="translate">Manager iPhone</div>
+            </h3>
+        </div>
+    <%}%>
+    <%  if(kind =="applewatch"){ %>
+        <div class="p-b-10 p-t-50">
+            <h3 class="ltext-103 cl5">
+                <div class="translate">Manager Apple Watch</div>
+            </h3>
+        </div>
+    <%}%>
+    <%  if(kind =="airpods"){ %>
+        <div class="p-b-10 p-t-50">
+            <h3 class="ltext-103 cl5">
+                <div class="translate">Manager Airpods</div>
+            </h3>
+        </div>
+    <%}%>
+    <%  if(kind =="macbook"){ %>
+    <div class="p-b-10 p-t-50">
+        <h3 class="ltext-103 cl5">
+            <div class="translate">Manager Macbook</div>
+        </h3>
+    </div>
+    <%}%>
 
 <body>
     <div class="bodyList">
@@ -37,19 +67,18 @@
                                     </colgroup>
                                     <thead>
                                         <tr>
-                                            <th> Product Name</th>
-                                            <th> Description</th>
+                                            <th>Product Name</th>
+                                            <th>Description</th>
                                             <th>Price ($)</th>
                                             <th>Image Path</th>
                                             <th>Quantity</th>
                                             <th>Created</th>
-                                            <th>Edit </th>
-                                          
+                                            <th>Edit </th>                                       
                                         </tr>
                                     </thead>
                                     <% var i =0 %>
                                   
-                                        <% listiphone.forEach(function (product) { %>
+                                        <% listproducts.forEach(function (product) { %>
                                             <tbody>
                                                 <tr>
                                                     <input type="hidden" value="<%= product._id %>" name="_id" id="_id">
@@ -111,7 +140,7 @@
                                 </table>
                             </div>
                             <div class="Sum">
-                                Tổng số iPhone là: <%= i %>
+                                Tổng số <%=kind%> là: <%= i %>
                             </div>
                         </div>
                     </div>
