@@ -13,7 +13,25 @@
         <div class="translate">Manager Order</div>
     </h3>
 </div>
+<form method="POST" action="/adminTin/managerorder" style="display: flex; justify-content:center">
+    <div class="rs1-select2 bor8 bg0 option-category" style="width:100px;margin-right:85px">
+        <select id="menu-category" style="width:100%; height: 30px; " class="js-select2 menu-category" name="time" onchange="menucategory()">
+            <option>2017</option>
+            <option>2018</option>
+            <option>2019</option>
+            <option>2020</option>
+        </select>
+        <div class="dropDownSelect2"></div>
+    </div>
 
+    <div class=" bor8 m-b-20 how-pos4-parent">                 
+        <input type="hidden" class="stext-110 cl2 plh3 size-112 p-l-10 p-r-10 w-full" name="year"
+        id="year" required readonly>
+    </div>
+    <button type="submit" class="flex-c-m stext-101 cl0  bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+        View order
+    </button>
+</form>
 <body>
     <div class="bodyList">
         <div class="product-status mg-tb-15">
@@ -108,4 +126,11 @@
 
 </body>
 
+<script>
+    menucategory = ()=>{
+        var id = document.getElementById("menu-category");
+        var displaytext = id.options[id.selectedIndex].text;
+        document.getElementById("year").value = displaytext;
+    }
+</script>
 </html>

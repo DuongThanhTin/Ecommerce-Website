@@ -20,7 +20,7 @@ router.get("/adminTin/managerusers/delete/:_id",isAuth,isAuthAdmin, AdminControl
 
 //Manager Order
 router.get("/adminTin/managerorder",isAuth,isAuthAdmin, AdminController.getListOrder);
-
+router.post("/adminTin/managerorder",isAuth,isAuthAdmin, AdminController.postlistOrder);
 
 
 //Manager iPhone

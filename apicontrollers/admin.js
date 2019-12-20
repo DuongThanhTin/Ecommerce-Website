@@ -132,6 +132,30 @@ module.exports = {
       });
   },
 
+  postlistOrder: function(req, res, next) {
+    req.session.isManager = false;
+    var {year} = req.body;
+    console.log("TCL: year", year)
+    
+    var count = 0;
+    UserModel.find()
+      .then(user => {
+        var data = user.filter(i => i.productNewOrder.order.length > 0);
+        //Filter Order Year
+         var data2 = data.filter(i=>i.productNewOrder.createdOrder.indexOf(year)>0)
+        //console.log("TCL: data2", data2)
+        res.render("admin/list-order", {
+          path: "/admin/list-order",
+          yearorder: year,
+          count: count,
+          listorder: data2
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+
   /* New DB*/
   getListNewProduct: function(req, res, next) {
     req.session.isManager = false;
