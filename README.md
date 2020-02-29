@@ -83,9 +83,9 @@
 * [express-session](https://www.npmjs.com/package/express-session)
 * [body-parser](https://www.npmjs.com/package/body-parser)
 * [connect-mongodb-session](https://www.npmjs.com/package/connect-mongodb-session)
+
 ## Đội ngũ phát triển
 * [Dương Thạnh Tín](https://github.com/DuongThanhTin) (MSSV: 16521241 - Lớp: PMCL2016.3)
-* [Hồ Nguyễn Nhật Tiến](https://github.com/nhattienho1998) (MSSV: 16521218 - Lớp: PMCL2016.3)
-* [Nguyễn Ngọc Nghĩa](https://github.com/nnnghia98) (MSSV: 16521585 - Lớp: PMCL2016.3)
+
 ## Giấy phép
 * [MIT](https://github.com/DuongThanhTin/Project-CNW/blob/master/LICENSE)
